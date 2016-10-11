@@ -1,4 +1,4 @@
-package org.zhenchao.chain_of_responsibility.pure;
+package org.zhenchao.responsibility.pure;
 
 /**
  * 总经理处理对象

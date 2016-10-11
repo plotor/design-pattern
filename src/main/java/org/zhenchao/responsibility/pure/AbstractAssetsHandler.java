@@ -1,4 +1,4 @@
-package org.zhenchao.chain_of_responsibility.pure;
+package org.zhenchao.responsibility.pure;
 
 /**
  * 资产申请抽象处理器

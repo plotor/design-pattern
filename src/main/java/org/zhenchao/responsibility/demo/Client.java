@@ -1,4 +1,4 @@
-package org.zhenchao.chain_of_responsibility.demo;
+package org.zhenchao.responsibility.demo;
 
 /**
  * @author zhenchao.wang 2016-09-07 23:41

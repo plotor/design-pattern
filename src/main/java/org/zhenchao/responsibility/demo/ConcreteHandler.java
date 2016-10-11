@@ -1,4 +1,4 @@
-package org.zhenchao.chain_of_responsibility.demo;
+package org.zhenchao.responsibility.demo;
 
 /**
  * 具象处理者
