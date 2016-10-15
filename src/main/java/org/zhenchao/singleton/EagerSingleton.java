@@ -11,6 +11,9 @@ public class EagerSingleton {
 
     private static final EagerSingleton INSTANCE = new EagerSingleton();
 
+    /**
+     * 私有构造函数
+     */
     private EagerSingleton() {
     }
 

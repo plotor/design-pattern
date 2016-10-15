@@ -11,10 +11,13 @@ public class LazySingleton {
 
     private static LazySingleton instance;
 
+    /**
+     * 私有的构造方法
+     */
     private LazySingleton() {
     }
 
-    synchronized public static LazySingleton getInstance() {
+    public synchronized static LazySingleton getInstance() {
         if (null == instance) {
             instance = new LazySingleton();
         }
