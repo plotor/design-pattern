@@ -8,8 +8,8 @@ package org.zhenchao.factory.simple;
  */
 public class Mocha implements Coffee {
 
-    public void addChocolateCream() {
-        System.out.println("添加巧克力酱...");
+    public String getName() {
+        return "mocha";
     }
 
 }

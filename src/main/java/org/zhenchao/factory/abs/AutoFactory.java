@@ -1,6 +1,8 @@
 package org.zhenchao.factory.abs;
 
 /**
+ * 汽车工厂
+ *
  * @author zhenchao.wang 2016-10-09 21:33
  * @version 1.0.0
  */

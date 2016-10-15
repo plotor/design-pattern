@@ -14,12 +14,12 @@ public class CoffeeFactory {
      * @param coffee
      * @return
      */
-    public static Coffee build(CoffeeEnum coffee) {
-        if (CoffeeEnum.LATTE.equals(coffee)) {
+    public static Coffee build(CoffeeType coffee) {
+        if (CoffeeType.LATTE.equals(coffee)) {
             return new Latte();
-        } else if (CoffeeEnum.MOCHA.equals(coffee)) {
+        } else if (CoffeeType.MOCHA.equals(coffee)) {
             return new Mocha();
-        } else if (CoffeeEnum.CAPPUCCINO.equals(coffee)) {
+        } else if (CoffeeType.CAPPUCCINO.equals(coffee)) {
             return new Cappuccino();
         } else {
             throw new IllegalArgumentException("Unknown coffee type!");

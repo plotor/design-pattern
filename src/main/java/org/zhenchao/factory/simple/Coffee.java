@@ -9,24 +9,10 @@ package org.zhenchao.factory.simple;
 public interface Coffee {
 
     /**
-     * 磨咖啡豆
+     * 获取咖啡名称
+     *
+     * @return
      */
-    default void grind() {
-        System.out.println("磨咖啡...");
-    }
-
-    /**
-     * 煮咖啡
-     */
-    default void boild() {
-        System.out.println("煮咖啡...");
-    }
-
-    /**
-     * 装杯
-     */
-    default void pack() {
-        System.out.println("装杯...");
-    }
+    String getName();
 
 }

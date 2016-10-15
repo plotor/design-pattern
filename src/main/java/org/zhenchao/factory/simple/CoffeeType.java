@@ -4,7 +4,7 @@ package org.zhenchao.factory.simple;
  * @author zhenchao.wang 2016-10-07 16:19
  * @version 1.0.0
  */
-public enum CoffeeEnum {
+public enum CoffeeType {
 
     LATTE("latte"),
     MOCHA("mocha"),
@@ -12,7 +12,7 @@ public enum CoffeeEnum {
 
     private String value;
 
-    CoffeeEnum(String value) {
+    CoffeeType(String value) {
         this.value = value;
     }
 }

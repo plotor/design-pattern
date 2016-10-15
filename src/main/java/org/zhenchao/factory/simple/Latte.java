@@ -8,8 +8,8 @@ package org.zhenchao.factory.simple;
  */
 public class Latte implements Coffee {
 
-    public void addPureMilk() {
-        System.out.println("添加普通纯牛奶...");
+    public String getName() {
+        return "latte";
     }
 
 }
