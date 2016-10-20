@@ -1,7 +1,5 @@
 package org.zhenchao.builder;
 
-import java.util.Calendar;
-
 /**
  * 客户端
  *
@@ -20,31 +18,13 @@ public class Client {
         Message email = emailDirector.build("zhenchao.wang@gmail.com", "builder pattern", "This is an email for you!", "x.jpg", "donna.z@gmail.com");
         System.out.println(email);
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_MONTH, 1);
-        calendar.set(Calendar.HOUR, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-        long startDate = calendar.getTimeInMillis();
-        calendar.add(Calendar.YEAR, 1);
-        long endDate = calendar.getTimeInMillis();
+        MessageBuilderV2 builderV2 = new MessageBuilderV2("18888888888", "This is an email for you!", "18511888811");
+        MessageV2 email2 = builderV2.setSubject("builder pattern").setAttachment("hello.doc").build();
+        System.out.println(email2);
 
-        MultimediaMessageBuilder builder = new MultimediaMessageBuilder(10001L, startDate, endDate);
-        // 客户端同时兼指导者
-        InsuranceContract personalContract = builder.setPersonName("zhenchao").setOther("balabalabala~").build();
-        personalContract.display();
-
-        MultimediaMessageBuilder builder2 = new MultimediaMessageBuilder(20001L, startDate, endDate);
-        // 客户端同时兼指导者
-        InsuranceContract companyContract = builder2.setPersonName("xiaomi").setOther("balabalabala~").build();
-        companyContract.display();
-
-        InsuranceContractV2.InsuranceContractBuilder builder3 = new InsuranceContractV2.InsuranceContractBuilder(30001L, startDate, endDate);
-        // 客户端同时兼指导者
-        InsuranceContractV2 personalContract2 = builder3.setPersonName("xiaochao").setOther("balabalabala~").build();
-        personalContract2.display();
-
+        MessageV3 mms = new MessageV3.MessageBuilder("18888888888", "This is a multimedia message!", "18511888811")
+                .setSubject("happy birthday").setAttachment("birthday song.mp3").build();
+        System.out.println(mms);
     }
 
 }
