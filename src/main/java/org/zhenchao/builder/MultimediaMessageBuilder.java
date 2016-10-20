@@ -6,7 +6,7 @@ package org.zhenchao.builder;
  * @author zhenchao.wang 2016-10-19 21:42
  * @version 1.0.0
  */
-public class InsuranceContractBuilder {
+public class MultimediaMessageBuilder {
 
     private long id;
 
@@ -20,23 +20,23 @@ public class InsuranceContractBuilder {
 
     private String other;
 
-    public InsuranceContractBuilder(long id, long startDate, long endDate) {
+    public MultimediaMessageBuilder(long id, long startDate, long endDate) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    public InsuranceContractBuilder setPersonName(String personName) {
+    public MultimediaMessageBuilder setPersonName(String personName) {
         this.personName = personName;
         return this;
     }
 
-    public InsuranceContractBuilder setCompanyName(String companyName) {
+    public MultimediaMessageBuilder setCompanyName(String companyName) {
         this.companyName = companyName;
         return this;
     }
 
-    public InsuranceContractBuilder setOther(String other) {
+    public MultimediaMessageBuilder setOther(String other) {
         this.other = other;
         return this;
     }

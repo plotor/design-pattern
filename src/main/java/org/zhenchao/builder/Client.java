@@ -30,14 +30,14 @@ public class Client {
         calendar.add(Calendar.YEAR, 1);
         long endDate = calendar.getTimeInMillis();
 
-        InsuranceContractBuilder builder = new InsuranceContractBuilder(10001L, startDate, endDate);
+        MultimediaMessageBuilder builder = new MultimediaMessageBuilder(10001L, startDate, endDate);
         // 客户端同时兼指导者
-        InsuranceContract personalContract = builder.setPersonName("zhenchao").setOther("balabalabala").build();
+        InsuranceContract personalContract = builder.setPersonName("zhenchao").setOther("balabalabala~").build();
         personalContract.display();
 
-        InsuranceContractBuilder builder2 = new InsuranceContractBuilder(20001L, startDate, endDate);
+        MultimediaMessageBuilder builder2 = new MultimediaMessageBuilder(20001L, startDate, endDate);
         // 客户端同时兼指导者
-        InsuranceContract companyContract = builder2.setPersonName("xiaomi").setOther("balabalabala").build();
+        InsuranceContract companyContract = builder2.setPersonName("xiaomi").setOther("balabalabala~").build();
         companyContract.display();
 
         InsuranceContractV2.InsuranceContractBuilder builder3 = new InsuranceContractV2.InsuranceContractBuilder(30001L, startDate, endDate);

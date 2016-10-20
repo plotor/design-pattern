@@ -23,7 +23,7 @@ public class InsuranceContract {
 
     private String other;
 
-    InsuranceContract(InsuranceContractBuilder builder) {
+    InsuranceContract(MultimediaMessageBuilder builder) {
         this.id = builder.getId();
         this.personName = builder.getPersonName();
         this.companyName = builder.getCompanyName();
