@@ -1,7 +1,7 @@
 package org.zhenchao.builder;
 
 /**
- * 抽象信息生成器
+ * 信息生成器
  *
  * @author zhenchao.wang 2016-10-19 22:34
  * @version 1.0.0
