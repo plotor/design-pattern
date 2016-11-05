@@ -9,3 +9,5 @@
 - [生成器模式](http://www.zhenchao.org/2016/10/23/design-pattern-builder/)
 
 - [原型模式](http://www.zhenchao.org/2016/10/30/design-pattern-prototype/)
+
+- [适配器模式](http://www.zhenchao.org/2016/11/05/design-pattern-adpater/)
