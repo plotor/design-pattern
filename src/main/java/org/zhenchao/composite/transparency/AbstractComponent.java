@@ -1,4 +1,4 @@
-package org.zhenchao.composite;
+package org.zhenchao.composite.transparency;
 
 /**
  * 抽象组件

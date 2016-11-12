@@ -1,9 +1,11 @@
-package org.zhenchao.composite;
+package org.zhenchao.composite.transparency;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 树枝节点
+ *
  * @author zhenchao.wang 2016-11-06 21:26
  * @version 1.0.0
  */

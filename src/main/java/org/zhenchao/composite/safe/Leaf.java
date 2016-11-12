@@ -1,7 +1,7 @@
-package org.zhenchao.composite;
+package org.zhenchao.composite.safe;
 
 /**
- * 叶子
+ * 叶子节点
  *
  * @author zhenchao.wang 2016-11-06 21:34
  * @version 1.0.0
