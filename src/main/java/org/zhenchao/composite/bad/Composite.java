@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 组件
+ * 树枝节点
  *
  * @author zhenchao.wang 2016-11-06 20:48
  * @version 1.0.0

@@ -1,10 +1,12 @@
 package org.zhenchao.composite.safe;
 
 /**
+ * 客户端
+ *
  * @author zhenchao.wang 2016-11-06 21:37
  * @version 1.0.0
  */
-public class Test {
+public class Client {
 
     public static void main(String[] args) {
         Composite root = new Composite("服装");
