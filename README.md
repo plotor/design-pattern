@@ -1,4 +1,6 @@
-# 设计模式
+### 设计模式
+
+---
 
 - [责任链模式](http://www.zhenchao.org/2016/09/11/chain-of-responsibility/)
 
@@ -13,3 +15,5 @@
 - [适配器模式](http://www.zhenchao.org/2016/11/05/design-pattern-adapter/)
 
 - [组合模式](http://www.zhenchao.org/2016/11/27/design-pattern-composite/)
+
+- [装饰模式](http://www.zhenchao.org/2016/12/03/design-pattern-decorator/)
