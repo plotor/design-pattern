@@ -3,6 +3,8 @@ package org.zhenchao.proxy.jproxy;
 import java.lang.reflect.Proxy;
 
 /**
+ * 客户端
+ *
  * @author zhenchao.wang 2016-12-11 10:25
  * @version 1.0.0
  */

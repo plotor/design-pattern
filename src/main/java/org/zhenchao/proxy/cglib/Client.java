@@ -3,6 +3,8 @@ package org.zhenchao.proxy.cglib;
 import org.zhenchao.proxy.jproxy.DatabaseDaoImpl;
 
 /**
+ * 客户端
+ *
  * @author zhenchao.wang 2016-12-11 10:58
  * @version 1.0.0
  */
