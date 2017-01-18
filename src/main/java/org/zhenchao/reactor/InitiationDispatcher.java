@@ -1,15 +1,23 @@
 package org.zhenchao.reactor;
 
 /**
+ * initiation dispatcher
+ *
  * @author zhenchao.wang 2017-01-18 09:40
  * @version 1.0.0
  */
-public interface InitiationDispatcher {
+public class InitiationDispatcher {
 
-    void register(EventHandler eventHandler);
+    int register(EventHandler handler, EventType type) {
+        return -1;
+    }
 
-    void remove(EventHandler eventHandler);
+    int remove(EventHandler handler, EventType type) {
+        return -1;
+    }
 
-    void dispatch(EventHandler eventHandler);
+    int handle(long timeout) {
+        return -1;
+    }
 
 }
