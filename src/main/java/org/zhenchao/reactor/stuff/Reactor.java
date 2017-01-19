@@ -61,6 +61,7 @@ public class Reactor implements Runnable {
         try {
             while (!Thread.interrupted()) {
                 // 轮询选择
+                System.out.println("Thread-" + Thread.currentThread().getId() + " is waiting...");
                 selector.select();
                 Set selected = selector.selectedKeys();
                 Iterator itr = selected.iterator();
