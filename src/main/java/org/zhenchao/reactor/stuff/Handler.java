@@ -26,12 +26,12 @@ public class Handler implements Runnable {
 
     private String clientName = "";
 
-    protected Handler(Selector selector, SocketChannel channel) throws IOException {
-        socketChannel = channel;
-        channel.configureBlocking(false);
-        selectionKey = socketChannel.register(selector, 0);
-        selectionKey.attach(this);
-        selectionKey.interestOps(SelectionKey.OP_READ);
+    public Handler(Selector selector, SocketChannel channel) throws IOException {
+        this.socketChannel = channel;
+        this.socketChannel.configureBlocking(false);
+        this.selectionKey = this.socketChannel.register(selector, 0);
+        this.selectionKey.attach(this);
+        this.selectionKey.interestOps(SelectionKey.OP_READ);
         selector.wakeup();
     }
 
@@ -42,15 +42,15 @@ public class Handler implements Runnable {
             } else if (state == SENDING) {
                 this.send();
             }
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     protected void read() throws IOException {
         int readCount = socketChannel.read(input);
         if (readCount > 0) {
-            readProcess(readCount);
+            this.readProcess(readCount);
         }
         state = SENDING;
         // Interested in writing

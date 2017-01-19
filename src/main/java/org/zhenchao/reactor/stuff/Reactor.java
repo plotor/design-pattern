@@ -17,62 +17,84 @@ import java.util.Set;
  */
 public class Reactor implements Runnable {
 
-    private final Selector selector;
-
-    private final ServerSocketChannel serverSocketChannel;
-
-    private final boolean isWithThreadPool;
-
-    protected Reactor(int port, boolean isWithThreadPool) throws IOException {
-        this.isWithThreadPool = isWithThreadPool;
-        selector = Selector.open();
-        serverSocketChannel = ServerSocketChannel.open();
-        serverSocketChannel.socket().bind(new InetSocketAddress(port));
-        serverSocketChannel.configureBlocking(false);
-        SelectionKey selectionKey0 = serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
-        selectionKey0.attach(new Acceptor());
-    }
-
-    public void run() {
-        System.out.println("Server listening to port: " + serverSocketChannel.socket().getLocalPort());
-        try {
-            while (!Thread.interrupted()) {
-                selector.select();
-                Set selected = selector.selectedKeys();
-                Iterator it = selected.iterator();
-                while (it.hasNext()) {
-                    this.dispatch((SelectionKey) (it.next()));
-                }
-                selected.clear();
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    private void dispatch(SelectionKey k) {
-        Runnable r = (Runnable) (k.attachment());
-        if (r != null) {
-            r.run();
-        }
-    }
-
-    class Acceptor implements Runnable {
+    private class Acceptor implements Runnable {
         public void run() {
             try {
                 SocketChannel socketChannel = serverSocketChannel.accept();
                 if (socketChannel != null) {
-                    if (isWithThreadPool) {
+                    if (useThreadPool) {
+                        // 采用线程池
                         new HandlerWithThreadPool(selector, socketChannel);
                     } else {
+                        // 不采用线程池
                         new Handler(selector, socketChannel);
                     }
                 }
-                System.out.println("Connection Accepted by Reactor");
-            } catch (IOException ex) {
-                ex.printStackTrace();
+                System.out.println("Connection Accepted by Reactor!");
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
+    }
+
+    private final Selector selector;
+
+    private final ServerSocketChannel serverSocketChannel;
+
+    private final boolean useThreadPool;
+
+    public Reactor(int port, boolean useThreadPool) throws IOException {
+        this.useThreadPool = useThreadPool;
+        this.selector = Selector.open();
+        this.serverSocketChannel = ServerSocketChannel.open();
+        this.serverSocketChannel.socket().bind(new InetSocketAddress(port));
+        this.serverSocketChannel.configureBlocking(false);
+        SelectionKey selectionKey = this.serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
+        selectionKey.attach(new Acceptor());
+    }
+
+    /**
+     * Reactor 轮询选择
+     */
+    public void run() {
+        System.out.println("Server listening to port: " + serverSocketChannel.socket().getLocalPort());
+        try {
+            while (!Thread.interrupted()) {
+                // 轮询选择
+                selector.select();
+                Set selected = selector.selectedKeys();
+                Iterator itr = selected.iterator();
+                while (itr.hasNext()) {
+                    this.dispatch((SelectionKey) (itr.next()));
+                }
+                selected.clear();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 分派任务
+     *
+     * @param key
+     */
+    private void dispatch(SelectionKey key) {
+        Runnable acceptor = (Runnable) (key.attachment());
+        if (acceptor != null) {
+            // 调用Accepter的run方法
+            acceptor.run();
+        }
+    }
+
+    /**
+     * 驱动函数
+     *
+     * @param args
+     * @throws Exception
+     */
+    public static void main(String[] args) throws Exception {
+        new Thread(new Reactor(8080, false)).start();
     }
 
 }

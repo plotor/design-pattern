@@ -5,4 +5,13 @@ package org.zhenchao.reactor;
  * @version 1.0.0
  */
 public class ConcreteEventHandler implements EventHandler {
+    @Override
+    public int handle(EventType type) {
+        return 0;
+    }
+
+    @Override
+    public Handle getHandle() {
+        return null;
+    }
 }

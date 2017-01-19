@@ -15,12 +15,25 @@ import java.util.concurrent.Executors;
  */
 public class HandlerWithThreadPool extends Handler {
 
+    private class Processor implements Runnable {
+
+        private int readCount;
+
+        Processor(int readCount) {
+            this.readCount = readCount;
+        }
+
+        public void run() {
+            processAndHandOff(readCount);
+        }
+    }
+
     private static ExecutorService pool = Executors.newFixedThreadPool(2);
 
     private static final int PROCESSING = 2;
 
-    public HandlerWithThreadPool(Selector sel, SocketChannel c) throws IOException {
-        super(sel, c);
+    public HandlerWithThreadPool(Selector selector, SocketChannel channel) throws IOException {
+        super(selector, channel);
     }
 
     public void read() throws IOException {
@@ -35,22 +48,9 @@ public class HandlerWithThreadPool extends Handler {
 
     //Start processing in a new Processor Thread and Hand off to the reactor thread.
     public synchronized void processAndHandOff(int readCount) {
-        readProcess(readCount);
+        this.readProcess(readCount);
         //Read processing done. Now the server is ready to send a message to the client.
         state = SENDING;
-    }
-
-    class Processor implements Runnable {
-
-        int readCount;
-
-        Processor(int readCount) {
-            this.readCount = readCount;
-        }
-
-        public void run() {
-            processAndHandOff(readCount);
-        }
     }
 
 }
