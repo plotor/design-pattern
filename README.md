@@ -2,20 +2,22 @@
 
 ---
 
-- [责任链模式](http://www.zhenchao.org/2016/09/11/chain-of-responsibility/)
+01. [责任链模式](http://www.zhenchao.org/2016/09/11/chain-of-responsibility/)
 
-- [工厂模式](http://www.zhenchao.org/2016/10/15/design-pattern-factory/)
+02. [工厂模式](http://www.zhenchao.org/2016/10/15/design-pattern-factory/)
 
-- [单例模式与多例模式](http://www.zhenchao.org/2016/10/15/design-pattern-singleton/)
+03. [单例模式与多例模式](http://www.zhenchao.org/2016/10/15/design-pattern-singleton/)
 
-- [生成器模式](http://www.zhenchao.org/2016/10/23/design-pattern-builder/)
+04. [生成器模式](http://www.zhenchao.org/2016/10/23/design-pattern-builder/)
 
-- [原型模式](http://www.zhenchao.org/2016/10/30/design-pattern-prototype/)
+05. [原型模式](http://www.zhenchao.org/2016/10/30/design-pattern-prototype/)
 
-- [适配器模式](http://www.zhenchao.org/2016/11/05/design-pattern-adapter/)
+06. [适配器模式](http://www.zhenchao.org/2016/11/05/design-pattern-adapter/)
 
-- [组合模式](http://www.zhenchao.org/2016/11/27/design-pattern-composite/)
+07. [组合模式](http://www.zhenchao.org/2016/11/27/design-pattern-composite/)
 
-- [装饰模式](http://www.zhenchao.org/2016/12/03/design-pattern-decorator/)
+08. [装饰模式](http://www.zhenchao.org/2016/12/03/design-pattern-decorator/)
 
-- [代理模式](http://www.zhenchao.org/2016/12/18/design-pattern-proxy/)
+09. [代理模式](http://www.zhenchao.org/2016/12/18/design-pattern-proxy/)
+
+10. [门面模式（外观模式）](http://www.zhenchao.org/2016/12/20/design-pattern-facade/)
