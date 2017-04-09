@@ -4,6 +4,7 @@ package cn.javass.dp.flyweight.example1;
  * 描述授权数据的数据model
  */
 public class AuthorizationModel {
+
     /**
      * 人员
      */

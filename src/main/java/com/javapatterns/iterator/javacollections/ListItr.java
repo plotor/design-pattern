@@ -12,6 +12,7 @@ package com.javapatterns.iterator.javacollections;
 
 import java.util.AbstractList;
 import java.util.ListIterator;
+import java.util.NoSuchElementException;
 
 class ListItr extends AbstractList.Itr implements ListIterator {
     ListItr(int index) {

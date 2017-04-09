@@ -10,7 +10,7 @@ public class UnsharedConcreteFlyweight implements Flyweight {
     /**
      * 记录每个组合对象所包含的子组件
      */
-    private List<Flyweight> list = new ArrayList<Flyweight>();
+    private List<Flyweight> list = new ArrayList<>();
 
     public boolean match(String securityEntity, String permit) {
         for (Flyweight f : list) {

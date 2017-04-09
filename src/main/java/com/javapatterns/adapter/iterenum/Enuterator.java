@@ -5,18 +5,19 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class Enuterator implements Iterator {
-    Enumeration enum;
 
-    public Enuterator(Enumeration enum) {
-        this. enum =enum ;
+    Enumeration enumeration;
+
+    public Enuterator(Enumeration enumeration) {
+        this.enumeration = enumeration;
     }
 
     public boolean hasNext() {
-        return enum.hasMoreElements();
+        return enumeration.hasMoreElements();
     }
 
     public Object next() throws NoSuchElementException {
-        return enum.nextElement();
+        return enumeration.nextElement();
     }
 
     public void remove() {

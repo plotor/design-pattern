@@ -11,5 +11,5 @@ public interface Flyweight {
      * @param permit 权限
      * @return true表示匹配，false表示不匹配
      */
-    public boolean match(String securityEntity, String permit);
+    boolean match(String securityEntity, String permit);
 }

@@ -8,20 +8,21 @@ import java.util.Map;
 /**
  * 安全管理，实现成单例
  */
-public class SecurityMgr {
-    private static SecurityMgr securityMgr = new SecurityMgr();
+public class SecurityManager {
+
+    private static SecurityManager securityManager = new SecurityManager();
+
     /**
      * 在运行期间，用来存放登录人员对应的权限，
      * 在Web应用中，这些数据通常会存放到session中
      */
-    private Map<String, Collection<Flyweight>> map =
-            new HashMap<String, Collection<Flyweight>>();
+    private Map<String, Collection<Flyweight>> map = new HashMap<>();
 
-    private SecurityMgr() {
+    private SecurityManager() {
     }
 
-    public static SecurityMgr getInstance() {
-        return securityMgr;
+    public static SecurityManager getInstance() {
+        return securityManager;
     }
 
     /**
@@ -31,7 +32,7 @@ public class SecurityMgr {
      */
     public void login(String user) {
         //登录的时候就需要把该用户所拥有的权限，从数据库中取出来，放到缓存中去
-        Collection<Flyweight> col = queryByUser(user);
+        Collection<Flyweight> col = this.queryByUser(user);
         map.put(user, col);
     }
 
@@ -49,10 +50,10 @@ public class SecurityMgr {
             System.out.println(user + "没有登录或是没有被分配任何权限");
             return false;
         }
-        for (Flyweight fm : col) {
+        for (Flyweight flyweight : col) {
             //输出当前实例，看看是否同一个实例对象
-            System.out.println("fm==" + fm);
-            if (fm.match(securityEntity, permit)) {
+            System.out.println("fly weight hashcode : " + flyweight.hashCode());
+            if (flyweight.match(securityEntity, permit)) {
                 return true;
             }
         }
@@ -66,13 +67,13 @@ public class SecurityMgr {
      * @return 某人所拥有的权限
      */
     private Collection<Flyweight> queryByUser(String user) {
-        Collection<Flyweight> col = new ArrayList<Flyweight>();
-
-        for (String s : TestDB.colDB) {
-            String ss[] = s.split(",");
+        Collection<Flyweight> col = new ArrayList<>();
+        for (String colData : TestDB.colDB) {
+            // 张三,人员列表,查看
+            String ss[] = colData.split(",");
             if (ss[0].equals(user)) {
+                // 加载用户的所有享元
                 Flyweight fm = FlyweightFactory.getInstance().getFlyweight(ss[1] + "," + ss[2]);
-
                 col.add(fm);
             }
         }

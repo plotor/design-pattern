@@ -7,7 +7,7 @@ public interface Flyweight {
     /**
      * 示例操作，传入外部状态
      *
-     * @param extrinsicState 示例参数，外部状态
+     * @param externalState 示例参数，外部状态
      */
-    public void operation(String extrinsicState);
+    void operation(String externalState);
 }

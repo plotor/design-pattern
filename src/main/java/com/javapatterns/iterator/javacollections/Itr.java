@@ -13,7 +13,7 @@ package com.javapatterns.iterator.javacollections;
 import java.util.Iterator;
 
 class Itr implements Iterator {
-	/**
+    /**
      * Index of element to be returned by subsequent call to next.
      */
     int cursor = 0;
@@ -49,16 +49,16 @@ class Itr implements Iterator {
     }
 
     public void remove() {
-		if (lastRet == -1) {
-			throw new IllegalStateException();
-		}
+        if (lastRet == -1) {
+            throw new IllegalStateException();
+        }
         checkForComodification();
 
         try {
             AbstractList.this.remove(lastRet);
-			if (lastRet < cursor) {
-				cursor--;
-			}
+            if (lastRet < cursor) {
+                cursor--;
+            }
             lastRet = -1;
             expectedModCount = modCount;
         } catch (IndexOutOfBoundsException e) {
@@ -67,9 +67,9 @@ class Itr implements Iterator {
     }
 
     final void checkForComodification() {
-		if (modCount != expectedModCount) {
-			throw new ConcurrentModificationException();
-		}
+        if (modCount != expectedModCount) {
+            throw new ConcurrentModificationException();
+        }
     }
 }
 

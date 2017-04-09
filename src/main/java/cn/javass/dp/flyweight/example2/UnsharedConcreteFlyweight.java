@@ -10,7 +10,7 @@ public class UnsharedConcreteFlyweight implements Flyweight {
      */
     private String allState;
 
-    public void operation(String extrinsicState) {
+    public void operation(String externalState) {
         // 具体的功能处理
     }
 }

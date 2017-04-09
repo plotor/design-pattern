@@ -10,7 +10,7 @@ public class FlyweightFactory {
     /**
      * 缓存多个flyweight对象，这里只是示意一下
      */
-    private Map<String, Flyweight> fsMap = new HashMap<String, Flyweight>();
+    private Map<String, Flyweight> fsMap = new HashMap<>();
 
     /**
      * 获取key对应的享元对象
