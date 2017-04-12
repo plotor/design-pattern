@@ -1,4 +1,4 @@
-package org.zhenchao.flyweight;
+package org.zhenchao.flyweight.sincere;
 
 /**
  * 游客类型
@@ -8,10 +8,13 @@ package org.zhenchao.flyweight;
  */
 public enum VisitorType {
 
+    /** 默认类型 */
     DEFAULT(0),
 
+    /** 基于安全芯片 */
     FID(1),
 
+    /** 基于设备IMEI信息 */
     DEVICE(2);
 
     private int id;

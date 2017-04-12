@@ -8,6 +8,7 @@ package org.zhenchao.flyweight.abst;
  */
 public class ConcreteFlyweight implements AbstractFlyweight {
 
+    /** 内部状态 */
     private Object internalState;
 
     public ConcreteFlyweight(Object internalState) {

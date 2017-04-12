@@ -1,4 +1,4 @@
-package org.zhenchao.flyweight;
+package org.zhenchao.flyweight.sincere;
 
 import org.apache.commons.lang3.RandomStringUtils;
 

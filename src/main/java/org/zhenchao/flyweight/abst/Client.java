@@ -1,6 +1,8 @@
 package org.zhenchao.flyweight.abst;
 
 /**
+ * 客户端
+ *
  * @author zhenchao.wang 2017-04-09 18:16
  * @version 1.0.0
  */

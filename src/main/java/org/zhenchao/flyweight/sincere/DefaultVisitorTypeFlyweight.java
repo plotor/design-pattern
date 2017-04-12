@@ -1,4 +1,4 @@
-package org.zhenchao.flyweight;
+package org.zhenchao.flyweight.sincere;
 
 /**
  * 默认游客处理器享元
@@ -8,7 +8,7 @@ package org.zhenchao.flyweight;
  */
 public class DefaultVisitorTypeFlyweight extends AbstractVisitorTypeFlyweight {
 
-    /** 委托处理器 */
+    /** 内部状态：委托处理器 */
     private AbstractVisitorTypeFlyweight delegateFlyweight;
 
     public DefaultVisitorTypeFlyweight() {
