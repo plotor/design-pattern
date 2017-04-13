@@ -8,7 +8,7 @@ package org.zhenchao.flyweight.composite;
  */
 public abstract class AbstractResultHandler implements Comparable<AbstractResultHandler> {
 
-    /** 基础优先级 */
+    /** 内部状态：基础优先级 */
     protected static final int BASE_PRIORITY = 0;
 
     /**

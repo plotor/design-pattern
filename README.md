@@ -21,3 +21,5 @@
 09. [代理模式](http://www.zhenchao.org/2016/12/18/design-pattern-proxy/)
 
 10. [门面模式（外观模式）](http://www.zhenchao.org/2016/12/20/design-pattern-facade/)
+
+11. [享元模式](http://www.zhenchao.org/2017/04/13/design-pattern-flyweight/)
