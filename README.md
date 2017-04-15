@@ -30,7 +30,7 @@
 
 01. [责任链模式](http://www.zhenchao.org/2016/09/11/chain-of-responsibility/)
 
-02. 不变模式
+02. [不变模式](http://www.zhenchao.org/2016/12/21/design-pattern-immutable/)
 
 03. 策略模式
 
