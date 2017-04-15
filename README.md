@@ -1,7 +1,5 @@
 ## 设计模式
 
----
-
 ### 一. 创建模式
 
 01. [工厂模式](http://www.zhenchao.org/2016/10/15/design-pattern-factory/)
