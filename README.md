@@ -32,7 +32,7 @@
 
 02. [不变模式](http://www.zhenchao.org/2016/12/21/design-pattern-immutable/)
 
-03. 策略模式
+03. [策略模式](http://www.zhenchao.org/2016/11/03/design-pattern-strategy/)
 
 04. 模板方法模式
 
