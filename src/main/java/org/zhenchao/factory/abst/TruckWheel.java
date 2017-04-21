@@ -1,4 +1,4 @@
-package org.zhenchao.factory.abs;
+package org.zhenchao.factory.abst;
 
 /**
  * 卡车轮胎

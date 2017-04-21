@@ -1,4 +1,4 @@
-package org.zhenchao.factory.abs;
+package org.zhenchao.factory.abst;
 
 /**
  * @author zhenchao.wang 2016-10-09 21:40
