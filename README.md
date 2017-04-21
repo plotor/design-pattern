@@ -36,7 +36,7 @@
 
 04. 模板方法模式
 
-05. 观察者模式
+05. [观察者模式](http://www.zhenchao.org/2016/11/16/design-pattern-observer/)
 
 06. 迭代器模式
 
