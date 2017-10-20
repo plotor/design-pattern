@@ -8,6 +8,7 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.Callable;
 
 /**
  * http://jeewanthad.blogspot.hk/2013/02/reactor-pattern-explained-part-1.html
@@ -45,34 +46,33 @@ public class Reactor implements Runnable {
                 }
                 selected.clear();
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void dispatch(SelectionKey key) {
-        Runnable acceptor = (Runnable) (key.attachment());
+    private void dispatch(SelectionKey key) throws Exception {
+        Callable acceptor = (Callable) (key.attachment());
         if (acceptor != null) {
             // 调用Accepter的run方法
-            acceptor.run();
+            acceptor.call();
         }
     }
 
-    private class Acceptor implements Runnable {
-        public void run() {
-            try {
-                SocketChannel socketChannel = serverSocketChannel.accept();
-                if (socketChannel != null) {
-                    if (useThreadPool) {
-                        new HandlerWithThreadPool(selector, socketChannel);
-                    } else {
-                        new HandlerWithoutThreadPool(selector, socketChannel);
-                    }
+    private class Acceptor implements Callable<Boolean> {
+
+        @Override
+        public Boolean call() throws Exception {
+            SocketChannel socketChannel = serverSocketChannel.accept();
+            if (socketChannel != null) {
+                if (useThreadPool) {
+                    new HandlerWithThreadPool(selector, socketChannel);
+                } else {
+                    new HandlerWithoutThreadPool(selector, socketChannel);
                 }
-                System.out.println("Connection accepted by reactor!");
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+            System.out.println("Connection accepted by reactor!");
+            return true;
         }
     }
 

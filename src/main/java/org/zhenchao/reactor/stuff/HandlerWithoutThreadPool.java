@@ -5,6 +5,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
+import java.util.concurrent.Callable;
 
 /**
  * http://jeewanthad.blogspot.hk/2013/02/reactor-pattern-explained-part-1.html
@@ -12,7 +13,7 @@ import java.nio.channels.SocketChannel;
  * @author zhenchao.wang 2017-01-18 22:40
  * @version 1.0.0
  */
-public class HandlerWithoutThreadPool implements Runnable {
+public class HandlerWithoutThreadPool implements Callable<Boolean> {
 
     protected final SocketChannel socketChannel;
     protected final SelectionKey selectionKey;
@@ -34,16 +35,18 @@ public class HandlerWithoutThreadPool implements Runnable {
     }
 
     @Override
-    public void run() {
+    public Boolean call() throws Exception {
         try {
             if (state == READING) {
                 this.read();
             } else if (state == SENDING) {
                 this.send();
             }
+            return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            socketChannel.close();
         }
+        return false;
     }
 
     protected void read() throws IOException {

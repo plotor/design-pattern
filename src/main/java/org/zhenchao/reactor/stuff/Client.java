@@ -33,7 +33,7 @@ public class Client {
     private void sayHello() throws Exception {
         ExecutorService es = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         List<Callable<Boolean>> tasks = new ArrayList<>();
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 128; i++) {
             tasks.add(() -> {
                 Socket socket = null;
                 PrintWriter out = null;
