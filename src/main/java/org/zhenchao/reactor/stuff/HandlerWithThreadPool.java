@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
  * @author zhenchao.wang 2017-01-18 22:41
  * @version 1.0.0
  */
-public class HandlerWithThreadPool extends Handler {
+public class HandlerWithThreadPool extends HandlerWithoutThreadPool {
 
     private class Processor implements Runnable {
 

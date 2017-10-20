@@ -17,30 +17,8 @@ import java.util.Set;
  */
 public class Reactor implements Runnable {
 
-    private class Acceptor implements Runnable {
-        public void run() {
-            try {
-                SocketChannel socketChannel = serverSocketChannel.accept();
-                if (socketChannel != null) {
-                    if (useThreadPool) {
-                        // 采用线程池
-                        new HandlerWithThreadPool(selector, socketChannel);
-                    } else {
-                        // 不采用线程池
-                        new Handler(selector, socketChannel);
-                    }
-                }
-                System.out.println("Connection Accepted by Reactor!");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     private final Selector selector;
-
     private final ServerSocketChannel serverSocketChannel;
-
     private final boolean useThreadPool;
 
     public Reactor(int port, boolean useThreadPool) throws IOException {
@@ -53,14 +31,11 @@ public class Reactor implements Runnable {
         selectionKey.attach(new Acceptor());
     }
 
-    /**
-     * Reactor 轮询选择
-     */
+    @Override
     public void run() {
-        System.out.println("Server listening to port: " + serverSocketChannel.socket().getLocalPort());
+        System.out.println("Server listening on port: " + serverSocketChannel.socket().getLocalPort());
         try {
             while (!Thread.interrupted()) {
-                // 轮询选择
                 System.out.println("Thread-" + Thread.currentThread().getId() + " is waiting...");
                 selector.select();
                 Set selected = selector.selectedKeys();
@@ -75,11 +50,6 @@ public class Reactor implements Runnable {
         }
     }
 
-    /**
-     * 分派任务
-     *
-     * @param key
-     */
     private void dispatch(SelectionKey key) {
         Runnable acceptor = (Runnable) (key.attachment());
         if (acceptor != null) {
@@ -88,12 +58,24 @@ public class Reactor implements Runnable {
         }
     }
 
-    /**
-     * 驱动函数
-     *
-     * @param args
-     * @throws Exception
-     */
+    private class Acceptor implements Runnable {
+        public void run() {
+            try {
+                SocketChannel socketChannel = serverSocketChannel.accept();
+                if (socketChannel != null) {
+                    if (useThreadPool) {
+                        new HandlerWithThreadPool(selector, socketChannel);
+                    } else {
+                        new HandlerWithoutThreadPool(selector, socketChannel);
+                    }
+                }
+                System.out.println("Connection accepted by reactor!");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public static void main(String[] args) throws Exception {
         new Thread(new Reactor(8080, false)).start();
     }

@@ -8,15 +8,15 @@ package org.zhenchao.reactor;
  */
 public class InitiationDispatcher {
 
-    int register(EventHandler handler, EventType type) {
+    int registerHandler(EventHandler handler, EventType type) {
         return -1;
     }
 
-    int remove(EventHandler handler, EventType type) {
+    int removeHandler(EventHandler handler, EventType type) {
         return -1;
     }
 
-    int handle(long timeout) {
+    int handleEvents(long timeout) {
         return -1;
     }
 

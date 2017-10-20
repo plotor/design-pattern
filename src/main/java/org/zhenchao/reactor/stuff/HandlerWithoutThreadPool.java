@@ -12,21 +12,19 @@ import java.nio.channels.SocketChannel;
  * @author zhenchao.wang 2017-01-18 22:40
  * @version 1.0.0
  */
-public class Handler implements Runnable {
+public class HandlerWithoutThreadPool implements Runnable {
 
     protected final SocketChannel socketChannel;
-
     protected final SelectionKey selectionKey;
 
     protected ByteBuffer input = ByteBuffer.allocate(1024);
 
     protected static final int READING = 0, SENDING = 1;
-
     protected int state = READING;
 
     private String clientName = "";
 
-    public Handler(Selector selector, SocketChannel channel) throws IOException {
+    public HandlerWithoutThreadPool(Selector selector, SocketChannel channel) throws IOException {
         this.socketChannel = channel;
         this.socketChannel.configureBlocking(false);
         this.selectionKey = this.socketChannel.register(selector, 0);
@@ -35,6 +33,7 @@ public class Handler implements Runnable {
         selector.wakeup();
     }
 
+    @Override
     public void run() {
         try {
             if (state == READING) {
@@ -53,23 +52,17 @@ public class Handler implements Runnable {
             this.readProcess(readCount);
         }
         state = SENDING;
-        // Interested in writing
         selectionKey.interestOps(SelectionKey.OP_WRITE);
     }
 
     protected void send() throws IOException {
         System.out.println("Saying hello to " + clientName);
-        ByteBuffer output = ByteBuffer.wrap(("Hello " + clientName + "\n").getBytes());
+        ByteBuffer output = ByteBuffer.wrap(("Hello, " + clientName + "\n").getBytes());
         socketChannel.write(output);
         selectionKey.interestOps(SelectionKey.OP_READ);
         state = READING;
     }
 
-    /**
-     * Processing of the read message. This only prints the message to stdOut.
-     *
-     * @param readCount
-     */
     protected synchronized void readProcess(int readCount) {
         StringBuilder sb = new StringBuilder();
         input.flip();

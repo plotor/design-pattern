@@ -7,6 +7,7 @@ package org.zhenchao.reactor;
  * @version 1.0.0
  */
 public enum EventType {
+
     ACCEPT(1),
     READ(2),
     WRITE(4),
