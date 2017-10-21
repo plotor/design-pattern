@@ -1,4 +1,4 @@
-package org.zhenchao.reactor;
+package org.zhenchao.reactor.theory;
 
 /**
  * event type

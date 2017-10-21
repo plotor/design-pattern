@@ -8,76 +8,73 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.concurrent.Callable;
 
 /**
- * http://jeewanthad.blogspot.hk/2013/02/reactor-pattern-explained-part-1.html
- *
- * @author zhenchao.wang 2017-01-18 22:35
+ * @author zhenchao.wang 2017-10-21 15:02
  * @version 1.0.0
  */
 public class Reactor implements Runnable {
 
-    private final Selector selector;
-    private final ServerSocketChannel serverSocketChannel;
-    private final boolean useThreadPool;
+    final Selector selector;
+    final ServerSocketChannel serverSocketChannel;
+    final boolean isWithThreadPool;
 
-    public Reactor(int port, boolean useThreadPool) throws IOException {
-        this.useThreadPool = useThreadPool;
-        this.selector = Selector.open();
-        this.serverSocketChannel = ServerSocketChannel.open();
-        this.serverSocketChannel.socket().bind(new InetSocketAddress(port));
-        this.serverSocketChannel.configureBlocking(false);
-        SelectionKey selectionKey = this.serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
-        selectionKey.attach(new Acceptor());
+    Reactor(int port, boolean isWithThreadPool) throws IOException {
+
+        this.isWithThreadPool = isWithThreadPool;
+        selector = Selector.open();
+        serverSocketChannel = ServerSocketChannel.open();
+        serverSocketChannel.socket().bind(new InetSocketAddress(port));
+        serverSocketChannel.configureBlocking(false);
+        SelectionKey selectionKey0 = serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
+        selectionKey0.isValid();
+        selectionKey0.attach(new Acceptor());
     }
 
-    @Override
     public void run() {
-        System.out.println("Server listening on port: " + serverSocketChannel.socket().getLocalPort());
+        System.out.println("Server listening to port: " + serverSocketChannel.socket().getLocalPort());
         try {
             while (!Thread.interrupted()) {
-                System.out.println("Thread-" + Thread.currentThread().getId() + " is waiting...");
                 selector.select();
                 Set selected = selector.selectedKeys();
-                Iterator itr = selected.iterator();
-                while (itr.hasNext()) {
-                    this.dispatch((SelectionKey) (itr.next()));
+                Iterator it = selected.iterator();
+                while (it.hasNext()) {
+                    dispatch((SelectionKey) (it.next()));
                 }
                 selected.clear();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 
-    private void dispatch(SelectionKey key) throws Exception {
-        Callable acceptor = (Callable) (key.attachment());
-        if (acceptor != null) {
-            // 调用Accepter的run方法
-            acceptor.call();
+    void dispatch(SelectionKey k) {
+        Runnable r = (Runnable) (k.attachment());
+        if (r != null) {
+            r.run();
         }
     }
 
-    private class Acceptor implements Callable<Boolean> {
-
-        @Override
-        public Boolean call() throws Exception {
-            SocketChannel socketChannel = serverSocketChannel.accept();
-            if (socketChannel != null) {
-                if (useThreadPool) {
-                    new HandlerWithThreadPool(selector, socketChannel);
-                } else {
-                    new HandlerWithoutThreadPool(selector, socketChannel);
+    class Acceptor implements Runnable {
+        public void run() {
+            try {
+                SocketChannel socketChannel = serverSocketChannel.accept();
+                if (socketChannel != null) {
+                    // System.out.println("new socket channel:" + socketChannel.hashCode());
+                    if (isWithThreadPool) {
+                        new HandlerWithThreadPool(selector, socketChannel);
+                    } else {
+                        new Handler(selector, socketChannel);
+                    }
                 }
+                System.out.println("Connection Accepted by Reactor");
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
-            System.out.println("Connection accepted by reactor!");
-            return true;
         }
     }
 
     public static void main(String[] args) throws Exception {
-        new Thread(new Reactor(8080, false)).start();
+        new Thread(new Reactor(8080, true)).start();
     }
-
 }

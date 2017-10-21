@@ -1,73 +1,69 @@
 package org.zhenchao.reactor.stuff;
 
-import org.apache.commons.lang3.RandomStringUtils;
-
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
+import java.net.UnknownHostException;
 
 /**
- * http://jeewanthad.blogspot.hk/2013/02/reactor-pattern-explained-part-1.html
- *
- * @author zhenchao.wang 2017-01-18 22:26
+ * @author zhenchao.wang 2017-10-21 15:01
  * @version 1.0.0
  */
 public class Client {
+    String hostIp;
+    int hostPort;
 
-    private String host;
-    private int port;
-
-    public Client(String host, int port) {
-        this.host = host;
-        this.port = port;
+    public Client(String hostIp, int hostPort) {
+        this.hostIp = hostIp;
+        this.hostPort = hostPort;
     }
 
-    private void sayHello() throws Exception {
-        ExecutorService es = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-        List<Callable<Boolean>> tasks = new ArrayList<>();
-        for (int i = 0; i < 128; i++) {
-            tasks.add(() -> {
-                Socket socket = null;
-                PrintWriter out = null;
-                BufferedReader in = null;
-                try {
-                    socket = new Socket(host, port);
-                    out = new PrintWriter(socket.getOutputStream(), true);
-                    in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                    System.out.println("Client[" + Thread.currentThread().getId() + "] connect success, host : " + host + " port: " + port);
-                    String hay = RandomStringUtils.randomAlphanumeric(32);
-                    out.println(hay);
-                    System.out.println("Client[" + Thread.currentThread().getId() + "] receive data from server : " + in.readLine().trim());
-                    return true;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    if (null != out) out.close();
-                    if (null != in) in.close();
-                    if (null != socket) socket.close();
-                }
-                return false;
-            });
+    public void runClient() throws IOException {
+        Socket clientSocket = null;
+        PrintWriter out = null;
+        BufferedReader in = null;
+
+        try {
+            clientSocket = new Socket(hostIp, hostPort);
+            out = new PrintWriter(clientSocket.getOutputStream(), true);
+            in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        } catch (UnknownHostException e) {
+            System.err.println("Unknown host: " + hostIp);
+            System.exit(1);
+        } catch (IOException e) {
+            System.err.println("Couldn't connect to: " + hostIp);
+            System.exit(1);
         }
-        List<Future<Boolean>> futures = es.invokeAll(tasks);
-        for (final Future<Boolean> future : futures) {
-            future.get();
+
+        BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+        String userInput;
+
+        System.out.println("Client connected to host : " + hostIp + " port: " + hostPort);
+        System.out.println("Type (\"Bye\" to quit)");
+        System.out.println("Tell what your name is to the Server.....");
+
+        while ((userInput = stdIn.readLine()) != null) {
+
+            out.println(userInput);
+
+            // Break when client says Bye.
+            if (userInput.equalsIgnoreCase("Bye")) {
+                break;
+            }
+
+            System.out.println("Server says: " + in.readLine());
         }
-        TimeUnit.SECONDS.sleep(5);
-        es.shutdown();
+
+        out.close();
+        in.close();
+        stdIn.close();
+        clientSocket.close();
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
         Client client = new Client("127.0.0.1", 8080);
-        client.sayHello();
+        client.runClient();
     }
-
 }
