@@ -7,6 +7,7 @@ import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * http://jeewanthad.blogspot.hk/2013/02/reactor-pattern-explained-part-1.html
@@ -21,7 +22,8 @@ public class Handler implements Runnable {
     private final SocketChannel socketChannel;
     private final SelectionKey selectionKey;
 
-    private static ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+    // private static ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+    private static ExecutorService pool = Executors.newFixedThreadPool(1);
 
     private ByteBuffer input = ByteBuffer.allocate(1024);
     private boolean isClosed;
@@ -70,6 +72,11 @@ public class Handler implements Runnable {
 
     private void process(int readCount) {
         System.out.println("[thread-" + Thread.currentThread().getId() + "] is processing data.");
+        try {
+            TimeUnit.SECONDS.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         StringBuilder sb = new StringBuilder();
         input.flip();
         byte[] subStringBytes = new byte[readCount];

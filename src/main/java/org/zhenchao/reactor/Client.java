@@ -31,9 +31,10 @@ public class Client {
     }
 
     private void sayHello() throws Exception {
-        ExecutorService es = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        int clientSize = 1024;
+        ExecutorService es = Executors.newFixedThreadPool(clientSize);
         List<Callable<Boolean>> tasks = new ArrayList<>();
-        for (int i = 0; i < 200000; i++) {
+        for (int i = 0; i < clientSize; i++) {
             tasks.add(() -> {
                 Socket socket = null;
                 PrintWriter out = null;

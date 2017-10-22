@@ -34,7 +34,7 @@ public class Reactor implements Runnable {
         System.out.println("Server listening on port: " + serverSocketChannel.socket().getLocalPort());
         try {
             while (!Thread.interrupted()) {
-                System.out.println("Thread-" + Thread.currentThread().getId() + " is waiting...");
+                // System.out.println("Thread-" + Thread.currentThread().getId() + " is waiting...");
                 selector.select();
                 Set selected = selector.selectedKeys();
                 Iterator itr = selected.iterator();
@@ -64,10 +64,6 @@ public class Reactor implements Runnable {
                 e.printStackTrace();
             }
         }
-    }
-
-    public static void main(String[] args) throws Exception {
-        new Thread(new Reactor(8080)).start();
     }
 
 }
