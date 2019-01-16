@@ -45,7 +45,103 @@ public enum EnumSingleton {
 }
 ```
 
-相对于传统饿汉式，基于枚举的饿汉式具备饿汉式所有的优点，同时更加简单，此外基于枚举的饿汉式还有一个非常重要的特性，就是 __防止反序列化创建新的对象__，不过 java 1.5 之后才有枚举类，所以之前的 jdk 没有这样的福利，不过现在的 jdk 版本基本上都是 1.6 之后，所以 __大力推荐__ 这类方式。
+相对于传统饿汉式，基于枚举的饿汉式具备饿汉式所有的优点，同时更加简单。此外，基于枚举的饿汉式还有一个非常重要的特性，就是 __防止反序列化创建新的对象__，测试如下：
+
+```java
+public class EnumSingletonTest implements Serializable {
+
+    private static final long serialVersionUID = 991713955127096061L;
+
+    @Test
+    public void test() throws Exception {
+        // 枚举类型反序列化得到的还是原对象
+        EnumSingleton newInstance = this.deserialize(this.serialize(EnumSingleton.INSTANCE));
+        Assert.assertEquals(EnumSingleton.INSTANCE, newInstance);
+
+        // 普通类型反序列化会创建新的对象
+        EnumSingletonTest newInstance2 = this.deserialize(this.serialize(this));
+        Assert.assertNotEquals(this, newInstance2);
+
+    }
+
+    /**
+     * 序列化
+     *
+     * @param obj
+     * @return
+     * @throws IOException
+     */
+    private byte[] serialize(Object obj) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        try {
+            oos.writeObject(obj);
+            oos.flush();
+            return baos.toByteArray();
+        } finally {
+            oos.close();
+        }
+    }
+
+    /**
+     * 反序列化
+     *
+     * @param bytes
+     * @param <T>
+     * @return
+     * @throws Exception
+     */
+    private <T> T deserialize(byte[] bytes) throws Exception {
+        ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bytes));
+        try {
+            return (T) ois.readObject();
+        } finally {
+            ois.close();
+        }
+    }
+}
+```
+
+枚举类型之所以在反序列化时不会创建新的对象是因为 java 对于枚举类型的序列化操作进行了特殊处理。相对于普通对象，java 在序列化枚举对象时实际上只是调用 ``Enum#name`` 方法获取当前对象的 name 值，并将 name 值进行序列化存储，当执行反序列化时实际上是拿到 name 值，然后通过调用 `Enum#valueOf` 方法获取 name 值对应的枚举对象。此外，为了防止破坏该机制，所有自定义的 writeObject、readObject、readObjectNoData、writeReplace，以及 readResolve 方法在执行序列化操作时都会被忽略。官方文档如下：
+
+> __Serialization of Enum Constants__
+>
+> Enum constants are serialized differently than ordinary serializable or externalizable objects. The serialized form of an enum constant consists solely of its name; field values of the constant are not present in the form. To serialize an enum constant, ObjectOutputStream writes the value returned by the enum constant's name method. To deserialize an enum constant, ObjectInputStream reads the constant name from the stream; the deserialized constant is then obtained by calling the java.lang.Enum.valueOf method, passing the constant's enum type along with the received constant name as arguments. Like other serializable or externalizable objects, enum constants can function as the targets of back references appearing subsequently in the serialization stream.
+>
+> The process by which enum constants are serialized cannot be customized: any class-specific writeObject, readObject, readObjectNoData, writeReplace, and readResolve methods defined by enum types are ignored during serialization and deserialization. Similarly, any serialPersistentFields or serialVersionUID field declarations are also ignored--all enum types have a fixed serialVersionUID of 0L. Documenting serializable fields and data for enum types is unnecessary, since there is no variation in the type of data sent.
+
+不过 java 1.5 之后才有枚举类，所以之前的 jdk 没有这样的福利，不过现在的 jdk 版本基本上都是 1.6 之后，所以 __大力推荐__ 这类方式。
+
+对于其它单例模式的实现方式，如果希望能够在反序列化时不创建新的对象，我们可以实现 readResolve 方法，并在该方法中返回单例对象，如下：
+
+```java
+public class EnumSingletonTest implements Serializable {
+
+    private static final long serialVersionUID = 991713955127096061L;
+
+    private static final EnumSingletonTest INSTANCE = new EnumSingletonTest();
+
+    @Test
+    public void test() throws Exception {
+        // 反序列化操作没有创建新的对象
+        EnumSingletonTest newInstance2 = this.deserialize(this.serialize(INSTANCE));
+        Assert.assertEquals(INSTANCE, newInstance);
+
+    }
+
+    /**
+     * 防止反序列化创建新的对象
+     *
+     * @return
+     * @throws ObjectStreamException
+     */
+    private Object readResolve() throws ObjectStreamException {
+        return INSTANCE;
+    }
+
+    // ... 省略序列化和反序列化方法
+}
+```
 
 ##### 1.2.3 懒汉式
 

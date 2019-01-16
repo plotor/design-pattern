@@ -6,7 +6,7 @@ package org.zhenchao.singleton;
  * @author zhenchao.wang 2016-10-15 21:28
  * @version 1.0.0
  */
-public enum EnumSingleton{
+public enum EnumSingleton {
 
     INSTANCE;
 
