@@ -23,6 +23,7 @@ public class TwoDirectAdapter implements AbstractPropertiesHandler, AbstractXmlH
         this.xmlHandler = xmlHandler;
     }
 
+    @Override
     public Document loadXml(String filepath) {
         Document document = null;
         Properties properties = propertiesHandler.loadProperties(filepath);
@@ -30,12 +31,14 @@ public class TwoDirectAdapter implements AbstractPropertiesHandler, AbstractXmlH
         return document;
     }
 
+    @Override
     public boolean saveXml(Document document, String filepath) {
         Properties properties = null;
         // ... 执行document到properties的转换逻辑
         return propertiesHandler.saveProperties(properties, filepath);
     }
 
+    @Override
     public Properties loadProperties(String filepath) {
         Properties properties = null;
         Document document = xmlHandler.loadXml(filepath);
@@ -43,6 +46,7 @@ public class TwoDirectAdapter implements AbstractPropertiesHandler, AbstractXmlH
         return properties;
     }
 
+    @Override
     public boolean saveProperties(Properties properties, String filepath) {
         Document document = null;
         // ... 执行properties到document的转换逻辑

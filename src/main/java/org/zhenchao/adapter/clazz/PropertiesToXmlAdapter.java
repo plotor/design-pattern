@@ -13,6 +13,7 @@ import java.util.Properties;
  */
 public class PropertiesToXmlAdapter extends GeneralPropertiesHandler implements AbstractXmlHandler {
 
+    @Override
     public Document loadXml(String filepath) {
         Document document = null;
         Properties properties = super.loadProperties(filepath);
@@ -20,6 +21,7 @@ public class PropertiesToXmlAdapter extends GeneralPropertiesHandler implements 
         return document;
     }
 
+    @Override
     public boolean saveXml(Document document, String filepath) {
         Properties properties = null;
         // ... 执行document到properties的转换逻辑

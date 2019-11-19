@@ -18,6 +18,7 @@ public class PropertiesToXmlAdapter implements AbstractXmlHandler {
         this.abstractPropertiesHandler = abstractPropertiesHandler;
     }
 
+    @Override
     public Document loadXml(String filepath) {
         Document document = null;
         Properties properties = abstractPropertiesHandler.loadProperties(filepath);
@@ -25,6 +26,7 @@ public class PropertiesToXmlAdapter implements AbstractXmlHandler {
         return document;
     }
 
+    @Override
     public boolean saveXml(Document document, String filepath) {
         Properties properties = null;
         // ... 执行document到properties的转换逻辑
