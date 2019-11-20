@@ -1,4 +1,4 @@
-package org.zhenchao.factory.general;
+package org.zhenchao.factory.method;
 
 import org.zhenchao.factory.simple.Cappuccino;
 import org.zhenchao.factory.simple.Coffee;

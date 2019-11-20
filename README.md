@@ -2,7 +2,7 @@
 
 #### 创建型模式
 
-- [Factory：工厂模式]
+- [Factory：工厂模式](docs/factory.md)
 - [Builder：构造器模式]
 - [单例模式 & 多例模式](docs/singleton.md)
 - [Prototype：原型模式]
