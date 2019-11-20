@@ -79,3 +79,5 @@ public class PackGrape extends Packing {
 
 }
 ```
+
+上述示例中我们也可以为 `putIn()` 方法提供默认的实现，此类方法也叫钩子方法，子类可以视情况来覆盖实现该方法（称为挂钩）。
