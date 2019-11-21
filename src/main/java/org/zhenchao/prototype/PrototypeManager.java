@@ -1,7 +1,7 @@
 package org.zhenchao.prototype;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 原型管理器
@@ -11,14 +11,14 @@ import java.util.List;
  */
 public class PrototypeManager {
 
-    private List<Animal> animals = new ArrayList<>();
+    private Map<String, Animal> animals = new HashMap<>();
 
-    public void add(Animal animal) {
-        animals.add(animal);
+    public void add(String name, Animal animal) {
+        animals.put(name, animal);
     }
 
-    public Animal get(int i) {
-        return animals.get(i);
+    public Animal get(String name) {
+        return animals.get(name);
     }
 
     public int getSize() {

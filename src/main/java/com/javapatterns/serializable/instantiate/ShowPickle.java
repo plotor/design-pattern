@@ -36,19 +36,19 @@ class ShowPickle extends Frame {
      */
     ShowPickle(String serComponent) {
 
-		/*
-		* Invoke the super class constructor, add an event listener
-		* for the "close" event and change the layout to "Flow".
-		*/
+        /*
+         * Invoke the super class constructor, add an event listener
+         * for the "close" event and change the layout to "Flow".
+         */
         super("Show Pickle");
         addWindowListener(new win());
         setLayout(new FlowLayout());
-		
-		/*
-		* Instantiate the serialized button.  If the process
-		* does not work for a particular button, then display an error
-		* and instantiate a regular button.
-		*/
+
+        /*
+         * Instantiate the serialized button.  If the process
+         * does not work for a particular button, then display an error
+         * and instantiate a regular button.
+         */
         TextField text;
 
         try {

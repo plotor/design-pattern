@@ -31,7 +31,7 @@ public class Handler implements Runnable {
 
     public void run() {
         try {
-            if(close) socketChannel.close();
+            if (close) socketChannel.close();
             if (state == READING) {
                 read();
             } else if (state == SENDING) {

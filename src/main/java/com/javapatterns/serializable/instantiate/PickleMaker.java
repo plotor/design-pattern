@@ -42,17 +42,17 @@ public class PickleMaker extends Frame {
      */
     PickleMaker(String text, int size) {
 
-      /*
-       * Invoke the super class constructor, add an event listener
-       * for the "close" event and change the layout to "Flow".
-       */
+        /*
+         * Invoke the super class constructor, add an event listener
+         * for the "close" event and change the layout to "Flow".
+         */
         super("Pickle Maker");
         addWindowListener(new win());
         setLayout(new FlowLayout());
 
-      /*
-       * Make the button and serialize it.
-       */
+        /*
+         * Make the button and serialize it.
+         */
         TextField textField = makeTextField(text, size);
         serializeTextField(textField, "mytextfield.ser");
         add(textField);

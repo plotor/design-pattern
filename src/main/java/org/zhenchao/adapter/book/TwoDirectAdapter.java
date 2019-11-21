@@ -8,7 +8,7 @@ import java.util.List;
  * @author zhenchao.wang 2016-11-03 22:43
  * @version 1.0.0
  */
-public class TwoDirectAdapter implements LogDBOperateApi, LogFileOperateApi{
+public class TwoDirectAdapter implements LogDBOperateApi, LogFileOperateApi {
 
     private LogDBOperateApi logDBOperate;
 

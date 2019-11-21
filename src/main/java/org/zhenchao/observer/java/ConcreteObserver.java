@@ -13,7 +13,7 @@ public class ConcreteObserver implements Observer {
 
     @Override
     public void update(Observable subject, Object arg) {
-        System.out.println(this.getClass().getClass() + ", data changed : " + ((ConcreteSubject)subject).getData());
+        System.out.println(this.getClass().getClass() + ", data changed : " + ((ConcreteSubject) subject).getData());
     }
 
 }

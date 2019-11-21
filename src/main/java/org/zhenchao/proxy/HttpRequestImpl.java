@@ -11,7 +11,7 @@ import java.net.URL;
  * @author zhenchao.wang 2016-12-11 20:31
  * @version 1.0.0
  */
-public class HttpRequestImpl implements HttpRequest{
+public class HttpRequestImpl implements HttpRequest {
 
     public String get(String url) throws Exception {
 

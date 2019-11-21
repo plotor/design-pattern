@@ -13,7 +13,7 @@ import java.util.Properties;
 
 class XMLParser implements DocumentHandler {
     public static final String PARSER_P = "org.apache.xerces.parsers.SAXParser";
-	private static final int IN_NOTHING = 0;
+    private static final int IN_NOTHING = 0;
     private static final int IN_DOCUMENT = 1;
     private static final int IN_KEY = 2;
     private int state = IN_NOTHING;
@@ -39,9 +39,9 @@ class XMLParser implements DocumentHandler {
     }
 
     private Class getParserClass() throws ClassNotFoundException {
-		if (parser_class == null) {
-			parser_class = Class.forName(PARSER_P);
-		}
+        if (parser_class == null) {
+            parser_class = Class.forName(PARSER_P);
+        }
         return parser_class;
     }
 

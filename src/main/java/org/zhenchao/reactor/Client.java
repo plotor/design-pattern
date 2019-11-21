@@ -47,7 +47,7 @@ public class Client {
                     out.println(hay);
                     String msg = in.readLine().trim();
                     System.out.println("Client[" + Thread.currentThread().getId() + "] receive data from server : " + msg);
-                    if(!("Hello " + hay).equals(msg)) {
+                    if (!("Hello " + hay).equals(msg)) {
                         System.err.println("expect : " + hay + ", but : " + msg);
                         System.exit(-1);
                     }

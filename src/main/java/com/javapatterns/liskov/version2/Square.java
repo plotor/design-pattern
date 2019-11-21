@@ -5,25 +5,30 @@ public class Square extends Rectangle {
 
     public long getSide() {
         return side;
-    }    public void setWidth(long width) {
-        setSide(width);
+    }
+
+    @Override
+    public void setWidth(long width) {
+        this.setSide(width);
     }
 
     public void setSide(long side) {
         this.side = side;
-    }    public long getWidth() {
-        return getSide();
     }
 
+    @Override
+    public long getWidth() {
+        return this.getSide();
+    }
+
+    @Override
     public void setHeight(long height) {
-        setSide(height);
+        this.setSide(height);
     }
 
+    @Override
     public long getHeight() {
-        return getSide();
+        return this.getSide();
     }
-
-
-
 
 }
