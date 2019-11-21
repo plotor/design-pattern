@@ -1,7 +1,8 @@
-package org.zhenchao.builder;
+package org.zhenchao.builder.v2;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.zhenchao.builder.Product;
 
 /**
  * 信息
@@ -9,7 +10,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * @author zhenchao.wang 2016-10-19 22:47
  * @version 1.0.0
  */
-public class MessageV2 implements Product {
+public class Message implements Product {
 
     /** 收件人 */
     private String receiver;
@@ -24,14 +25,14 @@ public class MessageV2 implements Product {
     private Object attachment;
 
     /** 发件人 */
-    private String addresser;
+    private String sender;
 
-    public MessageV2(MessageBuilderV2 builder) {
+    public Message(MessageBuilder builder) {
         this.receiver = builder.getReceiver();
         this.subject = builder.getSubject();
         this.body = builder.getBody();
         this.attachment = builder.getAttachment();
-        this.addresser = builder.getAddresser();
+        this.sender = builder.getSender();
     }
 
     @Override
@@ -55,7 +56,7 @@ public class MessageV2 implements Product {
         return attachment;
     }
 
-    public String getAddresser() {
-        return addresser;
+    public String getSender() {
+        return sender;
     }
 }

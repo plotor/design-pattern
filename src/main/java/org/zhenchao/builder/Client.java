@@ -1,5 +1,8 @@
 package org.zhenchao.builder;
 
+import org.zhenchao.builder.v2.MessageBuilder;
+import org.zhenchao.builder.v3.Message;
+
 /**
  * 客户端
  *
@@ -9,21 +12,31 @@ package org.zhenchao.builder;
 public class Client {
 
     public static void main(String[] args) {
-
-        MessageDirector smsDirector = new MessageDirector(new ShortMessageBuilder());
-        Message sms = smsDirector.build("18888888888", "", "This is a short message!", "", "18511888811");
+        MessageDirector smsDirector = new MessageDirector(new SmsBuilder());
+        org.zhenchao.builder.Message sms = smsDirector.build("18888888888", "", "This is a short message!", "", "18511888811");
         System.out.println(sms);
 
         MessageDirector emailDirector = new MessageDirector(new EmailBuilder());
-        Message email = emailDirector.build("zhenchao.wang@gmail.com", "builder pattern", "This is an email for you!", "x.jpg", "donna.z@gmail.com");
+        org.zhenchao.builder.Message email = emailDirector.build(
+                "zhenchao.wang@gmail.com", "builder pattern", "This is an email for you!", "x.jpg", "donna.z@gmail.com");
         System.out.println(email);
 
-        MessageBuilderV2 builderV2 = new MessageBuilderV2("18888888888", "This is an email for you!", "18511888811");
-        MessageV2 email2 = builderV2.setSubject("builder pattern").setAttachment("hello.doc").build();
+        org.zhenchao.builder.v2.Message email2 = new MessageBuilder()
+                .setReceiver("18888888888")
+                .setBody("This is an email for you!")
+                .setSubject("builder pattern")
+                .setAttachment("hello.doc")
+                .setSender("18511888811")
+                .build();
         System.out.println(email2);
 
-        MessageV3 mms = new MessageV3.MessageBuilder("18888888888", "This is a multimedia message!", "18511888811")
-                .setSubject("happy birthday").setAttachment("birthday song.mp3").build();
+        Message mms = Message.newBuilder()
+                .setReceiver("18888888888")
+                .setBody("This is a multimedia message!")
+                .setSubject("happy birthday")
+                .setAttachment("birthday song.mp3")
+                .setSender("18511888811")
+                .build();
         System.out.println(mms);
     }
 

@@ -8,28 +8,20 @@ package org.zhenchao.builder;
  */
 public class MessageDirector {
 
-    private MessageBuilder messageBuilder;
+    private MessageBuilder builder;
 
-    public MessageDirector(MessageBuilder messageBuilder) {
-        this.messageBuilder = messageBuilder;
+    public MessageDirector(MessageBuilder builder) {
+        this.builder = builder;
     }
 
-    /**
-     * 指导生成
-     *
-     * @param receiver
-     * @param subject
-     * @param body
-     * @param attachment
-     * @param addresser
-     * @return
-     */
-    public Message build(String receiver, String subject, String body, Object attachment, String addresser) {
-        messageBuilder.setReceiver(receiver);
-        messageBuilder.setSubject(subject);
-        messageBuilder.setBody(body);
-        messageBuilder.setAttachment(attachment);
-        messageBuilder.setAddresser(addresser);
-        return messageBuilder.retriveMessage();
+    public Message build(
+            String receiver, String subject, String body, Object attachment, String sender) {
+        builder.setReceiver(receiver);
+        builder.setSubject(subject);
+        builder.setBody(body);
+        builder.setAttachment(attachment);
+        builder.setSender(sender);
+        return builder.getMessage();
     }
+
 }

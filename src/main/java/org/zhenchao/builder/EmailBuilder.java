@@ -8,7 +8,7 @@ package org.zhenchao.builder;
  */
 public class EmailBuilder implements MessageBuilder {
 
-    Message email = new Message();
+    private Message email = new Message();
 
     @Override
     public void setReceiver(String receiver) {
@@ -31,12 +31,12 @@ public class EmailBuilder implements MessageBuilder {
     }
 
     @Override
-    public void setAddresser(String addresser) {
-        this.email.setAddresser(addresser);
+    public void setSender(String sender) {
+        this.email.setSender(sender);
     }
 
     @Override
-    public Message retriveMessage() {
+    public Message getMessage() {
         return this.email;
     }
 }

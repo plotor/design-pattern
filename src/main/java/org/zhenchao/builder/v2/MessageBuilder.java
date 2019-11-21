@@ -1,15 +1,12 @@
-package org.zhenchao.builder;
-
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+package org.zhenchao.builder.v2;
 
 /**
- * 信息
+ * 信息生成器
  *
- * @author zhenchao.wang 2016-10-19 22:47
+ * @author zhenchao.wang 2016-10-19 22:34
  * @version 1.0.0
  */
-public class Message implements Product {
+public class MessageBuilder {
 
     private String receiver;
     private String subject;
@@ -17,38 +14,42 @@ public class Message implements Product {
     private Object attachment;
     private String sender;
 
-    public Message() {
+    public MessageBuilder() {
     }
 
-    public Message(String receiver, String body, String sender) {
+    public MessageBuilder(String receiver, String body, String sender) {
         this.receiver = receiver;
         this.body = body;
         this.sender = sender;
     }
 
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
-    }
-
-    public void setReceiver(String receiver) {
+    public MessageBuilder setReceiver(String receiver) {
         this.receiver = receiver;
+        return this;
     }
 
-    public void setSubject(String subject) {
+    public MessageBuilder setSubject(String subject) {
         this.subject = subject;
+        return this;
     }
 
-    public void setBody(String body) {
+    public MessageBuilder setBody(String body) {
         this.body = body;
+        return this;
     }
 
-    public void setAttachment(Object attachment) {
+    public MessageBuilder setAttachment(Object attachment) {
         this.attachment = attachment;
+        return this;
     }
 
-    public void setSender(String sender) {
+    public MessageBuilder setSender(String sender) {
         this.sender = sender;
+        return this;
+    }
+
+    public Message build() {
+        return new Message(this);
     }
 
     public String getReceiver() {

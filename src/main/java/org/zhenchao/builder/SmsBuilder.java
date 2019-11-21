@@ -6,7 +6,7 @@ package org.zhenchao.builder;
  * @author zhenchao.wang 2016-10-19 22:58
  * @version 1.0.0
  */
-public class ShortMessageBuilder implements MessageBuilder {
+public class SmsBuilder implements MessageBuilder {
 
     private Message sms = new Message();
 
@@ -31,12 +31,12 @@ public class ShortMessageBuilder implements MessageBuilder {
     }
 
     @Override
-    public void setAddresser(String addresser) {
-        this.sms.setAddresser(addresser);
+    public void setSender(String sender) {
+        this.sms.setSender(sender);
     }
 
     @Override
-    public Message retriveMessage() {
+    public Message getMessage() {
         return this.sms;
     }
 }
