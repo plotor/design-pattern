@@ -8,7 +8,7 @@ public class ConcreteImplementor2 implements Implementor {
 
     @Override
     public void operationImpl() {
-
+        // 具体实现
     }
 
 }
