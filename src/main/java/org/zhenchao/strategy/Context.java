@@ -10,14 +10,14 @@ public class Context {
 
     public static void main(String[] args) {
 
-        Integer[] item = new Integer[100];
+        Integer[] nums = new Integer[100];
 
-        // 用具体的策略类进行实例化
-        AbstractSortAlgorithm<Integer> sortAlgorithm = new QuickSort<>();
-        // AbstractSortAlgorithm<Integer> sortAlgorithm = new MergeSort<>();
+        // 使用具体的策略类进行实例化
+        SortStrategy<Integer> sortStrategy = new QuickSortStrategy<>();
+        // SortStrategy<Integer> sortStrategy = new MergeSortStrategy<>();
 
-        // 不管sortAlgorithm怎么实例化，这里的调用方式不变，只是性能上有差异
-        sortAlgorithm.sort(item);
+        // 不管使用哪种具体策略，这里的调用方式不变，只是性能上有差异
+        sortStrategy.sort(nums);
 
     }
 

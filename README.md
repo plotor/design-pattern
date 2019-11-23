@@ -27,6 +27,6 @@
 - [Memento：备忘录模式]
 - [Observer：观察者模式]
 - [State：状态模式]
-- [Strategy：策略模式]
+- [Strategy：策略模式](docs/strategy.md)
 - [Template：模板方法模式](docs/template.md)
 - [Visitor：访问者模式]
