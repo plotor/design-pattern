@@ -7,7 +7,7 @@ package org.zhenchao.bridge.pretty;
 public class Client {
 
     public static void main(String[] args) {
-        // 创建具体实现对象
+        // 以站内短消息的形式发送
         MessageImplementor implementor = new SmsMessage();
 
         // 创建一条普通信息对象
@@ -22,8 +22,8 @@ public class Client {
         message = new SpecialUrgencyMessage(implementor);
         message.sendMessage("请喝一杯茶", "小李");
 
-        // 替换实现方式为手机短信息
-        implementor = new MobilePhoneMessage();
+        // 替换实现方式为电子邮件
+        implementor = new EmailMessage();
 
         // 创建一条普通信息对象
         message = new CommonMessage(implementor);
@@ -36,7 +36,6 @@ public class Client {
         // 创建一条特急消息
         message = new SpecialUrgencyMessage(implementor);
         message.sendMessage("请喝一杯茶", "小李");
-
     }
 
 }

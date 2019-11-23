@@ -8,6 +8,7 @@ public class EmailMessage implements MessageImplementor {
 
     @Override
     public void send(String message, String to) {
-        System.out.println("[电子邮件] 发送信息 [" + message + "] 给 " + to);
+        System.out.println("[电子邮件] 发送信息 [" + message + "] 给 [" + to + "]");
     }
+
 }

@@ -8,6 +8,7 @@ public class SmsMessage implements MessageImplementor {
 
     @Override
     public void send(String message, String to) {
-        System.out.println("[站内短消息] 发送信息 [" + message + "] 给 " + to);
+        System.out.println("[站内短消息] 发送信息 [" + message + "] 给 [" + to + "]");
     }
+
 }
