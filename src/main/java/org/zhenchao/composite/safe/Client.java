@@ -12,14 +12,14 @@ public class Client {
         Composite root = new Composite("服装");
 
         Composite man = new Composite("男装");
-        man.addComponent(new Leaf("衬衫"));
-        man.addComponent(new Leaf("夹克"));
-        root.addComponent(man);
+        man.add(new Leaf("衬衫"));
+        man.add(new Leaf("夹克"));
+        root.add(man);
 
         Composite woman = new Composite("女装");
-        woman.addComponent(new Leaf("裙子"));
-        woman.addComponent(new Leaf("打底裤"));
-        root.addComponent(woman);
+        woman.add(new Leaf("裙子"));
+        woman.add(new Leaf("打底裤"));
+        root.add(woman);
 
         root.print("");
     }

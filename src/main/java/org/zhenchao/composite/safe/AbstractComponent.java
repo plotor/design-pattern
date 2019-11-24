@@ -6,12 +6,8 @@ package org.zhenchao.composite.safe;
  * @author zhenchao.wang 2016-11-06 21:18
  * @version 1.0.0
  */
-public interface AbstractComponent {
+public abstract class AbstractComponent {
 
-    /**
-     * 打印
-     *
-     * @param parent
-     */
-    void print(String parent);
+    public abstract void print(String parent);
+
 }

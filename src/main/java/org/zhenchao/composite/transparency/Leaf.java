@@ -6,7 +6,7 @@ package org.zhenchao.composite.transparency;
  * @author zhenchao.wang 2016-11-06 21:34
  * @version 1.0.0
  */
-public class Leaf implements AbstractComponent {
+public class Leaf extends AbstractComponent {
 
     private String name;
 

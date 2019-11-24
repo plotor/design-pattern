@@ -11,11 +11,10 @@ import java.util.List;
  */
 public class Composite {
 
-    private List<Composite> childComposites = new ArrayList<>();
-
-    private List<Leaf> leafs = new ArrayList<>();
-
     private String name;
+
+    private List<Composite> childComposites = new ArrayList<>();
+    private List<Leaf> leafs = new ArrayList<>();
 
     public Composite(String name) {
         this.name = name;

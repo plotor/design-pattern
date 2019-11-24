@@ -6,40 +6,20 @@ package org.zhenchao.composite.transparency;
  * @author zhenchao.wang 2016-11-06 21:18
  * @version 1.0.0
  */
-public interface AbstractComponent {
+public abstract class AbstractComponent {
 
-    /**
-     * 打印
-     *
-     * @param parent
-     */
-    void print(String parent);
+    public abstract void print(String parent);
 
-    /**
-     * 添加组件
-     *
-     * @param component
-     */
-    default void addComponent(AbstractComponent component) {
+    public AbstractComponent get(int index) {
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * 删除组件
-     *
-     * @param component
-     */
-    default void removeComponent(AbstractComponent component) {
+    public void add(AbstractComponent component) {
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * 获取组件
-     *
-     * @param index
-     * @return
-     */
-    default AbstractComponent getComponent(int index) {
+    public void remove(AbstractComponent component) {
         throw new UnsupportedOperationException();
     }
+
 }

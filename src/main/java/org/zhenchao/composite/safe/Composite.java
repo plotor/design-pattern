@@ -9,7 +9,7 @@ import java.util.List;
  * @author zhenchao.wang 2016-11-06 21:26
  * @version 1.0.0
  */
-public class Composite implements AbstractComponent {
+public class Composite extends AbstractComponent {
 
     private String name;
 
@@ -27,16 +27,16 @@ public class Composite implements AbstractComponent {
         }
     }
 
-    public void addComponent(AbstractComponent component) {
+    public AbstractComponent get(int index) {
+        return index >= this.components.size() ? null : this.components.get(index);
+    }
+
+    public void add(AbstractComponent component) {
         this.components.add(component);
     }
 
-    public void removeComponent(AbstractComponent component) {
+    public void remove(AbstractComponent component) {
         this.components.remove(component);
-    }
-
-    public AbstractComponent getComponent(int index) {
-        return index >= this.components.size() ? null : this.components.get(index);
     }
 
 }

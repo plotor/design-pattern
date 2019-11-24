@@ -11,7 +11,7 @@
 
 - [Adapter：适配器模式](docs/adapter.md)
 - [Bridge：桥接模式](docs/bridge.md)
-- [Composite：组合模式]
+- [Composite：组合模式](docs/composite.md)
 - [Decorator：装饰模式]
 - [Facade：外观模式]
 - [Flyweight：享元模式]
