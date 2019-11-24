@@ -8,8 +8,7 @@ package org.zhenchao.decorator.coffee;
  */
 public abstract class CondimentDecorator extends Coffee {
 
-    protected static final String SEP = ", ";
-
+    // 需要持有一个被装饰组件对象
     protected Coffee coffee;
 
     public CondimentDecorator(String name, Coffee coffee) {
@@ -17,10 +16,7 @@ public abstract class CondimentDecorator extends Coffee {
         this.coffee = coffee;
     }
 
-    /**
-     * 标签信息
-     *
-     * @return
-     */
+    @Override
     public abstract String getName();
+
 }

@@ -1,7 +1,5 @@
 package org.zhenchao.decorator.coffee;
 
-import org.apache.commons.lang3.StringUtils;
-
 /**
  * 调味品：糖
  *
@@ -18,11 +16,12 @@ public class SugarDecorator extends CondimentDecorator {
 
     @Override
     public double price() {
-        return coffee.price() + 1.8;
+        return coffee.price() + 1.8D;
     }
 
     @Override
     public String getName() {
-        return StringUtils.join(coffee.getName(), SEP, NAME);
+        return coffee.getName() + ", " + NAME;
     }
+
 }

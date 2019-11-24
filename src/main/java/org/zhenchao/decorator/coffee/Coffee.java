@@ -8,7 +8,6 @@ package org.zhenchao.decorator.coffee;
  */
 public abstract class Coffee {
 
-    /** 咖啡名称 */
     private String name;
 
     public Coffee(String name) {

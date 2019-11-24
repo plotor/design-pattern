@@ -24,7 +24,6 @@ public class Client {
         Coffee blackSugarCoffee = new SugarDecorator(blackCoffee);
         System.out.println(blackSugarCoffee.getName());
         System.out.println(blackSugarCoffee.price());
-
     }
 
 }
