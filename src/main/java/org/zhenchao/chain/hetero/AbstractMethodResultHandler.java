@@ -1,6 +1,6 @@
-package org.zhenchao.responsibility.hetero;
+package org.zhenchao.chain.hetero;
 
-import org.zhenchao.responsibility.model.Result;
+import org.zhenchao.chain.model.Result;
 
 /**
  * 函数结果处理器抽象类

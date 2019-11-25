@@ -1,6 +1,6 @@
-package org.zhenchao.responsibility.hetero;
+package org.zhenchao.chain.hetero;
 
-import org.zhenchao.responsibility.model.Result;
+import org.zhenchao.chain.model.Result;
 
 /**
  * Value A处理器

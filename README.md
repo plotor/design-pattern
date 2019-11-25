@@ -19,7 +19,7 @@
 
 #### 行为模式
 
-- [Chain：责任链模式]
+- [Chain：职责链模式](docs/chain.md)
 - [Command：命令模式]
 - [Interpreter：解释器模式]
 - [Iterator：迭代器模式](docs/iterator.md)

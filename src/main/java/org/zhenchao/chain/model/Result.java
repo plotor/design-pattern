@@ -1,4 +1,4 @@
-package org.zhenchao.responsibility.model;
+package org.zhenchao.chain.model;
 
 /**
  * 函数结果
