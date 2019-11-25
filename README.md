@@ -29,4 +29,4 @@
 - [State：状态模式]
 - [Strategy：策略模式](docs/strategy.md)
 - [Template：模板方法模式](docs/template.md)
-- [Visitor：访问者模式]
+- [Visitor：访问者模式](docs/visitor.md)
