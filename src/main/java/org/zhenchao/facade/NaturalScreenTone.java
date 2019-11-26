@@ -6,7 +6,7 @@ package org.zhenchao.facade;
  * @author zhenchao.wang 2017-04-08 23:04
  * @version 1.0.0
  */
-public class NaturalScreenTone implements AbstractScreenTone {
+public class NaturalScreenTone implements ScreenTone {
 
     @Override
     public void turnOn() {

@@ -6,7 +6,7 @@ package org.zhenchao.facade;
  * @author zhenchao.wang 2017-04-08 22:59
  * @version 1.0.0
  */
-public class FashionSoundEffect implements AbstractSoundEffect {
+public class FashionSoundEffect implements SoundEffect {
 
     @Override
     public void turnOn() {

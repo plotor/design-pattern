@@ -10,12 +10,12 @@ public class Client {
 
     public static void main(String[] args) {
         // 原始调用方式
-        AbstractSoundEffect soundEffect = new FashionSoundEffect();
+        SoundEffect soundEffect = new FashionSoundEffect();
         soundEffect.turnOn();
-        AbstractScreenTone screenTone = new GorgeousScreenTone();
+        ScreenTone screenTone = new GorgeousScreenTone();
         screenTone.turnOn();
 
-        // 采用门面模式
+        // 采用外观模式
         OneKeyTheaterFacade facade = new OneKeyTheaterFacade();
         facade.turnOn();
     }

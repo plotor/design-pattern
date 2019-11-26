@@ -13,7 +13,7 @@
 - [Bridge：桥接模式](docs/bridge.md)
 - [Composite：组合模式](docs/composite.md)
 - [Decorator：装饰模式](docs/decorator.md)
-- [Facade：外观模式]
+- [Facade：外观模式](docs/facade.md)
 - [Flyweight：享元模式]
 - [Proxy：代理模式]
 

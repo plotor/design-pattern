@@ -6,7 +6,7 @@ package org.zhenchao.facade;
  * @author zhenchao.wang 2017-04-08 23:06
  * @version 1.0.0
  */
-public class GorgeousScreenTone implements AbstractScreenTone {
+public class GorgeousScreenTone implements ScreenTone {
 
     @Override
     public void turnOn() {

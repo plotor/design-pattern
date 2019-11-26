@@ -6,16 +6,8 @@ package org.zhenchao.facade;
  * @author zhenchao.wang 2017-04-08 22:56
  * @version 1.0.0
  */
-public interface AbstractSoundEffect {
-
-    /**
-     * 开启
-     */
+public interface SoundEffect {
     void turnOn();
 
-    /**
-     * 关闭
-     */
     void turnOff();
-
 }

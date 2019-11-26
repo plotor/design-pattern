@@ -8,28 +8,22 @@ package org.zhenchao.facade;
  */
 public class OneKeyTheaterFacade {
 
-    private AbstractSoundEffect soundEffect;
-
-    private AbstractScreenTone screenTone;
+    private SoundEffect soundEffect;
+    private ScreenTone screenTone;
 
     public OneKeyTheaterFacade() {
         this.soundEffect = new FashionSoundEffect();
         this.screenTone = new GorgeousScreenTone();
     }
 
-    /**
-     * 开启一键影音
-     */
     public void turnOn() {
         this.soundEffect.turnOn();
         this.screenTone.turnOn();
     }
 
-    /**
-     * 关闭一键影音
-     */
     public void turnOff() {
         this.soundEffect.turnOff();
         this.screenTone.turnOff();
     }
+
 }
