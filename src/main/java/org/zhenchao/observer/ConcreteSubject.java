@@ -1,6 +1,6 @@
-package org.zhenchao.observer.abst;
+package org.zhenchao.observer;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,24 +10,24 @@ import java.util.List;
  * @author zhenchao.wang 2017-04-21 16:09
  * @version 1.0.0
  */
-public class ConcreteSubject extends AbstractSubject {
+public class ConcreteSubject extends Subject {
 
-    private List<AbstractObserver> observers = new LinkedList<>();
+    private List<Observer> observers = new ArrayList<>();
 
     @Override
-    public void attach(AbstractObserver observer) {
+    public void register(Observer observer) {
         observers.add(observer);
     }
 
     @Override
-    public void detach(AbstractObserver observer) {
+    public void unregister(Observer observer) {
         observers.remove(observer);
     }
 
     @Override
     protected void notifyObservers() {
-        for (final AbstractObserver observer : observers) {
-            observer.update();
+        for (final Observer observer : observers) {
+            observer.update(this);
         }
     }
 
