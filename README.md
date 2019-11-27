@@ -24,7 +24,7 @@
 - [Interpreter：解释器模式]
 - [Iterator：迭代器模式](docs/iterator.md)
 - [Mediator：中介者模式](docs/mediator.md)
-- [Memento：备忘录模式]
+- [Memento：备忘录模式](docs/memento.md)
 - [Observer：观察者模式](docs/observer.md)
 - [State：状态模式]
 - [Strategy：策略模式](docs/strategy.md)

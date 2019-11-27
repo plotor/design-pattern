@@ -12,9 +12,9 @@ public class Client {
         ConcreteSubject subject = new ConcreteSubject();
         subject.addObserver(new ConcreteObserver());
         subject.addObserver(new ConcreteObserver());
-        subject.changeData("aaa");
-        subject.changeData("bbb");
-        subject.changeData("ccc");
+        subject.setData("aaa");
+        subject.setData("bbb");
+        subject.setData("ccc");
     }
 
 }
