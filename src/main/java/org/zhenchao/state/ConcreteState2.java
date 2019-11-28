@@ -8,7 +8,7 @@ public class ConcreteState2 implements State {
 
     @Override
     public void handle(String params) {
-        // 具体处理逻辑
+        // 具体处理逻辑，可以在此切换状态
     }
 
 }
