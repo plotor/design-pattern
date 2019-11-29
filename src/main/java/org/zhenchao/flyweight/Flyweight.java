@@ -1,4 +1,4 @@
-package org.zhenchao.flyweight.abst;
+package org.zhenchao.flyweight;
 
 /**
  * 抽象享元
@@ -6,7 +6,7 @@ package org.zhenchao.flyweight.abst;
  * @author zhenchao.wang 2017-04-09 17:48
  * @version 1.0.0
  */
-public interface AbstractFlyweight {
+public interface Flyweight {
 
     /**
      * 操作函数

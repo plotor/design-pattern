@@ -1,4 +1,4 @@
-package org.zhenchao.flyweight.abst;
+package org.zhenchao.flyweight;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class FlyweightFactory {
 
-    private Map<String, AbstractFlyweight> map = new ConcurrentHashMap<>();
+    private Map<String, Flyweight> map = new ConcurrentHashMap<>();
 
     private static final FlyweightFactory INSTANCE = new FlyweightFactory();
 
@@ -23,17 +23,18 @@ public class FlyweightFactory {
     }
 
     /**
-     * 获取享元
+     * 获取享元对象
      *
      * @param key
      * @return
      */
-    public AbstractFlyweight getFlyweight(String key) {
-        AbstractFlyweight flyweight = map.get(key);
+    public Flyweight getFlyweight(String key) {
+        Flyweight flyweight = map.get(key);
         if (null == flyweight) {
             flyweight = new ConcreteFlyweight("some internal state");
             map.put(key, flyweight);
         }
         return flyweight;
     }
+
 }

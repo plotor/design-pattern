@@ -6,15 +6,15 @@ package org.zhenchao.flyweight.sincere;
  * @author zhenchao.wang 2017-04-09 18:24
  * @version 1.0.0
  */
-public class DefaultVisitorTypeFlyweight extends AbstractVisitorTypeFlyweight {
+public class DefaultVisitorFlyweight extends VisitorFlyweight {
 
     /** 内部状态：委托处理器 */
-    private AbstractVisitorTypeFlyweight delegateFlyweight;
+    private VisitorFlyweight delegateFlyweight;
 
-    public DefaultVisitorTypeFlyweight() {
+    public DefaultVisitorFlyweight() {
     }
 
-    public DefaultVisitorTypeFlyweight(AbstractVisitorTypeFlyweight delegateFlyweight) {
+    public DefaultVisitorFlyweight(VisitorFlyweight delegateFlyweight) {
         this.delegateFlyweight = delegateFlyweight;
     }
 

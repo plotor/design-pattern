@@ -1,4 +1,4 @@
-package org.zhenchao.flyweight.abst;
+package org.zhenchao.flyweight;
 
 /**
  * 客户端
@@ -10,7 +10,7 @@ public class Client {
 
     public static void main(String[] args) {
         FlyweightFactory factory = FlyweightFactory.getInstance();
-        AbstractFlyweight flyweight = factory.getFlyweight("any key");
+        Flyweight flyweight = factory.getFlyweight("any key");
         flyweight.operate("any external state");
     }
 

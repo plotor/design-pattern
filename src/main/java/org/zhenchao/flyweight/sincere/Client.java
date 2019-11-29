@@ -11,19 +11,19 @@ import org.apache.commons.lang3.RandomStringUtils;
 public class Client {
 
     public static void main(String[] args) {
-        VisitorTypeFlyweightFactory factory = VisitorTypeFlyweightFactory.getInstance();
+        FlyweightFactory factory = FlyweightFactory.getInstance();
 
-        AbstractVisitorTypeFlyweight flyweight = factory.getFlyweight(VisitorType.DEFAULT);
-        flyweight.createOrRecoverVisitor(randomStr());
+        VisitorFlyweight flyweight = factory.getFlyweight(VisitorType.DEFAULT);
+        flyweight.createOrRecoverVisitor(randomId());
 
         flyweight = factory.getFlyweight(VisitorType.FID);
-        flyweight.createOrRecoverVisitor(randomStr());
+        flyweight.createOrRecoverVisitor(randomId());
 
         flyweight = factory.getFlyweight(VisitorType.DEVICE);
-        flyweight.createOrRecoverVisitor(randomStr());
+        flyweight.createOrRecoverVisitor(randomId());
     }
 
-    private static String randomStr() {
+    private static String randomId() {
         return RandomStringUtils.randomAlphanumeric(32);
     }
 
