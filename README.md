@@ -4,7 +4,7 @@
 
 - [Factory：工厂模式](docs/factory.md)
 - [Builder：生成器模式](docs/builder.md)
-- [单例模式 & 多例模式](docs/singleton.md)
+- [Singleton：单例模式](docs/singleton.md)
 - [Prototype：原型模式](docs/prototype.md)
 
 #### 结构型模式
@@ -30,3 +30,7 @@
 - [Strategy：策略模式](docs/strategy.md)
 - [Template：模板方法模式](docs/template.md)
 - [Visitor：访问者模式](docs/visitor.md)
+
+#### GoF 之外
+
+- [Immutable：不变模式](docs/immutable.md)

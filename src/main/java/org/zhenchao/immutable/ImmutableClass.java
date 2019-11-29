@@ -8,21 +8,14 @@ package org.zhenchao.immutable;
  */
 public final class ImmutableClass {  // 类应该用final修饰，防止被继承
 
-    /** 所有的属性都应该设置为私有 */
+    /* 所有的属性都应该设置为私有 */
 
     private Integer a;
-
     private Double b;
-
     private String c;
 
     /**
-     * 通过构造方法来实例化对象
-     * 如果传入的对象是可变的，则需要复制一份
-     *
-     * @param a
-     * @param b
-     * @param c
+     * 通过构造方法来实例化对象，如果传入的对象是可变的，则需要复制一份
      */
     public ImmutableClass(Integer a, Double b, String c) {
         this.a = a;
@@ -30,7 +23,7 @@ public final class ImmutableClass {  // 类应该用final修饰，防止被继�
         this.c = c;
     }
 
-    /** 所有的方法都需要加 final 修饰 */
+    /* 所有非私有的方法都需要加 final 修饰，避免覆盖 */
 
     public final Integer getA() {
         return a;
@@ -43,4 +36,5 @@ public final class ImmutableClass {  // 类应该用final修饰，防止被继�
     public final String getC() {
         return c;
     }
+
 }
