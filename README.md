@@ -20,7 +20,7 @@
 #### 行为模式
 
 - [Chain：职责链模式](docs/chain.md)
-- [Command：命令模式]
+- [Command：命令模式](docs/command.md)
 - [Interpreter：解释器模式]
 - [Iterator：迭代器模式](docs/iterator.md)
 - [Mediator：中介者模式](docs/mediator.md)
