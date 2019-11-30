@@ -11,23 +11,26 @@ import java.lang.reflect.Method;
  */
 public class DatabaseDaoProxy implements InvocationHandler {
 
+    /** 被代理对象 */
     private DatabaseDao databaseDao;
 
     public DatabaseDaoProxy(DatabaseDao databaseDao) {
         this.databaseDao = databaseDao;
     }
 
+    @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Object obj;
         try {
             obj = method.invoke(databaseDao, args);
             // 提交事务
             TransactionUtils.commit();
-        } catch (Throwable e) {
+        } catch (Throwable t) {
             // 回滚事务
             TransactionUtils.rollback();
-            throw e;
+            throw t;
         }
         return obj;
     }
+
 }

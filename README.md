@@ -14,8 +14,8 @@
 - [Composite：组合模式](docs/composite.md)
 - [Decorator：装饰模式](docs/decorator.md)
 - [Facade：外观模式](docs/facade.md)
-- [Flyweight：享元模式](flyweight.md)
-- [Proxy：代理模式]
+- [Flyweight：享元模式](docs/flyweight.md)
+- [Proxy：代理模式](docs/proxy.md)
 
 #### 行为模式
 

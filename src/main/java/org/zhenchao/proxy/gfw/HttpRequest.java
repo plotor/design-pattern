@@ -1,4 +1,4 @@
-package org.zhenchao.proxy;
+package org.zhenchao.proxy.gfw;
 
 /**
  * HTTP请求抽象
@@ -8,11 +8,6 @@ package org.zhenchao.proxy;
  */
 public interface HttpRequest {
 
-    /**
-     * 请求具体地址
-     *
-     * @param url
-     */
     String get(String url) throws Exception;
 
 }

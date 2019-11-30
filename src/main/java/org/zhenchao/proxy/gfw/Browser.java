@@ -1,4 +1,4 @@
-package org.zhenchao.proxy;
+package org.zhenchao.proxy.gfw;
 
 /**
  * 简单浏览器

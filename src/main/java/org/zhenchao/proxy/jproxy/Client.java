@@ -14,17 +14,17 @@ public class Client {
 
         DatabaseDao databaseDao = new DatabaseDaoImpl();
 
+        // 创建代理对象
         DatabaseDao databaseDaoProxy = (DatabaseDao) Proxy.newProxyInstance(
                 databaseDao.getClass().getClassLoader(),
                 databaseDao.getClass().getInterfaces(),
                 new DatabaseDaoProxy(databaseDao));
 
+        /* 基于代理对象执行数据库操作 */
+
         databaseDaoProxy.insert();
-
         databaseDaoProxy.delete();
-
         databaseDaoProxy.select();
-
         databaseDaoProxy.update();
     }
 
