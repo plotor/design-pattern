@@ -6,7 +6,7 @@ package org.zhenchao.flyweight.composite;
  * @author zhenchao.wang 2017-4-12 23:49:25
  * @version 1.0.0
  */
-public class ThirdResultHandler extends AbstractResultHandler {
+public class ThirdResultHandler extends ResultHandler {
 
     @Override
     public void handle(Object obj) {
@@ -14,8 +14,8 @@ public class ThirdResultHandler extends AbstractResultHandler {
     }
 
     @Override
-    public int getPriority() {
-        return BASE_PRIORITY + 20;
+    public int priority() {
+        return DEFAULT_PRIORITY + 20;
     }
 
 }

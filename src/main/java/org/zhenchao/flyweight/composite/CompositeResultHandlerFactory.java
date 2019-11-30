@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class CompositeResultHandlerFactory {
 
-    private ResultHandlerFactory resultHandlerFactory = ResultHandlerFactory.getInstance();
+    private ResultHandlerFactory factory = ResultHandlerFactory.getInstance();
 
     /** 基于静态内部类的单例实现 */
     private static class InnerClass {
@@ -38,7 +38,7 @@ public class CompositeResultHandlerFactory {
         // 构建复合享元
         CompositeResultHandler compositeHandler = new CompositeResultHandler();
         for (int i = 0; i < key.length(); i++) {
-            AbstractResultHandler handler = resultHandlerFactory.getResultHandler(String.valueOf(key.charAt(i)));
+            ResultHandler handler = factory.getResultHandler(String.valueOf(key.charAt(i)));
             if (null != handler) {
                 compositeHandler.add(handler);
             }

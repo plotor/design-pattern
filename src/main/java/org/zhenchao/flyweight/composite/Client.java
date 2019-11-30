@@ -10,7 +10,11 @@ public class Client {
 
     public static void main(String[] args) {
         CompositeResultHandlerFactory factory = CompositeResultHandlerFactory.getInstance();
-        AbstractResultHandler handler = factory.getCompositeResultHandler("124");
+
+        ResultHandler handler = factory.getCompositeResultHandler("12");
+        handler.handle(new Object());
+
+        factory.getCompositeResultHandler("13");
         handler.handle(new Object());
     }
 

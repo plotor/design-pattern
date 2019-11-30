@@ -1,7 +1,5 @@
 package org.zhenchao.flyweight.composite;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -13,18 +11,13 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ResultHandlerFactory {
 
-    private Map<String, AbstractResultHandler> handlerMap = new ConcurrentHashMap<>(4);
+    private Map<String, ResultHandler> handlerMap = new ConcurrentHashMap<>(3);
 
     private static volatile ResultHandlerFactory instance;
 
     private ResultHandlerFactory() {
     }
 
-    /**
-     * 双检查单例
-     *
-     * @return
-     */
     public static ResultHandlerFactory getInstance() {
         if (null == instance) {
             synchronized (ResultHandlerFactory.class) {
@@ -42,40 +35,34 @@ public class ResultHandlerFactory {
      * @param key
      * @return
      */
-    public AbstractResultHandler getResultHandler(String key) {
-        if (StringUtils.isBlank(key)) {
-            return null;
-        }
-
-        AbstractResultHandler handler = handlerMap.get(key);
+    public ResultHandler getResultHandler(String key) {
+        // 先从缓存中获取
+        ResultHandler handler = handlerMap.get(key);
         if (null != handler) {
             return handler;
         }
 
+        // 创建并缓存新的实例
         switch (key) {
             case "1": {
                 handler = new FirstResultHandler();
-                handlerMap.put("1", handler);
+                handlerMap.put(key, handler);
                 break;
             }
             case "2": {
                 handler = new SecondResultHandler();
-                handlerMap.put("2", handler);
+                handlerMap.put(key, handler);
                 break;
             }
             case "3": {
                 handler = new ThirdResultHandler();
-                handlerMap.put("3", handler);
-                break;
-            }
-            case "4": {
-                handler = new FourthResultHandler();
-                handlerMap.put("4", handler);
+                handlerMap.put(key, handler);
                 break;
             }
             default:
-                // nothing
+                throw new IllegalArgumentException("unknown handler key: " + key);
         }
         return handler;
     }
+
 }
